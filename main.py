@@ -14,7 +14,11 @@ def timeline_runmru():
 def timeline_eventlog():
     pass
 
+def timeline_lnkfiles():
+    pass
+
 def timeline_prefetch():
+    # Defining the timestamp pattern to parse into Epoch. 
     ts_pattern = "%Y-%m-%dT%H:%M:%S.%f"
     # command = '.\\bin\\PECmd.exe -q -d "sample\C\Windows\prefetch" --json output --jsonf temp.json'
     # os.system(command)
@@ -62,18 +66,22 @@ def timeline_prefetch():
             EXECUTION_LIST.append(last_run_list)
 
 def main():
-    timeline_prefetch()
+    # timeline_prefetch()
     timeline_amcache()
     timeline_runmru()
     timeline_userassist()
-    timeline_eventlog
+    timeline_eventlog()
+    timeline_lnkfiles()
     # Reference: https://www.geeksforgeeks.org/python-sort-list-according-second-element-sublist/
     # Sort the nested list EXECUTION_LIST by second element. 
     sorted_execution_list = sorted(EXECUTION_LIST, key = lambda x: x[1])
     for item in sorted_execution_list:
-        print(item)
-    # TO-DO: Convert EPOCH time back to date and time format
-    # TO-DO: Save the list into CSV. 
+        # Reference: https://www.javatpoint.com/python-epoch-to-datetime 
+        converted_datetime = datetime.datetime.fromtimestamp(item[1])
+        execution_source = item[0]
+        execution_sourcepath = item[2]
+        print(converted_datetime, execution_source, execution_sourcepath)
+        # TO-DO: Save the list into CSV. 
 
 if __name__ == "__main__":
     main()
