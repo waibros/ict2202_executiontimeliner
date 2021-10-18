@@ -1,4 +1,5 @@
 import os, json, datetime, io
+from glob import glob
 
 EXECUTION_LIST = []
 
@@ -63,7 +64,28 @@ def timeline_eventlog():
                 
             
 def timeline_lnkfiles():
-    pass
+    # command = '.\\bin\\LECmd.exe -q -d "sample\C" --json output'
+    # os.system(command)
+    # f = glob(os.path.join(".\\output","*_LECMD_Output.json"))[0]
+    # if os.path.isfile('.\\output\\lnktmp.json'):
+    #     os.remove(".\\output\\lnktmp.json")
+    # os.rename(f, os.path.join(".\\output","lnktmp.json"))
+    with open("output\\lnktmp.json") as jsonfile:
+        for line in jsonfile:
+            lnk_list = ["Lnk Log"]
+            
+            parsed_json = json.loads(line)
+            execution_time_epoch = convert_to_epoch(parsed_json["SourceAccessed"])
+            try:
+                executable_path = parsed_json["LocalPath"]
+            except:
+                executable_path = "NULL"
+            
+            lnk_list.append(execution_time_epoch)
+            lnk_list.append(executable_path)
+            
+            EXECUTION_LIST.append(lnk_list)
+
 
 def timeline_prefetch():
     # command = '.\\bin\\PECmd.exe -q -d "sample\C\Windows\prefetch" --json output --jsonf temp.json'
