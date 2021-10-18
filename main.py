@@ -80,11 +80,10 @@ def timeline_lnkfiles():
                 executable_path = parsed_json["LocalPath"]
             except:
                 executable_path = "NULL"
-            
-            lnk_list.append(execution_time_epoch)
-            lnk_list.append(executable_path)
-            
-            EXECUTION_LIST.append(lnk_list)
+            if executable_path != "NULL":
+                lnk_list.append(execution_time_epoch)
+                lnk_list.append(executable_path)
+                EXECUTION_LIST.append(lnk_list)
 
 
 def timeline_prefetch():
