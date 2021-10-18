@@ -75,8 +75,8 @@ def timeline_prefetch():
     with open("output\\temp.json", encoding="utf8") as jsonfile:
         for line in jsonfile:
             
-            first_run_list = ["Prefetch"]
-            last_run_list = ["Prefetch"]
+            first_run_list = ["Prefetch (First Run)"]
+            last_run_list = ["Prefetch (Last Run)"]
             
             executable_path = ""
             parsed_json = json.loads(line)
@@ -88,18 +88,18 @@ def timeline_prefetch():
                     executable_path = file
 
             first_run_epoch = convert_to_epoch(parsed_json["SourceCreated"])  
-            last_run_epoch = convert_to_epoch(parsed_json["SourceModified"])     
+            last_run_epoch = convert_to_epoch(parsed_json["SourceModified"])    
 
             first_run_list.append(int(first_run_epoch)) # first run
             first_run_list.append(executable_path)
             last_run_list.append(int(last_run_epoch)) # last run
             last_run_list.append(executable_path)
 
-            # EXECUTION_LIST.append(first_run_list)
+            EXECUTION_LIST.append(first_run_list)
             EXECUTION_LIST.append(last_run_list)
 
 def main():
-    # timeline_prefetch()
+    timeline_prefetch()
     timeline_amcache()
     timeline_runmru()
     timeline_userassist()
@@ -108,6 +108,7 @@ def main():
     # Reference: https://www.geeksforgeeks.org/python-sort-list-according-second-element-sublist/
     # Sort the nested list EXECUTION_LIST by second element. 
     sorted_execution_list = sorted(EXECUTION_LIST, key = lambda x: x[1])
+
     for item in sorted_execution_list:
         # Reference: https://www.javatpoint.com/python-epoch-to-datetime 
         converted_datetime = datetime.datetime.fromtimestamp(item[1])
