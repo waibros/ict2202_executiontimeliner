@@ -27,12 +27,9 @@ def timeline_amcache():
 def timeline_userassist():
     pass
 
-def timeline_runmru():
-    pass
-
 def timeline_eventlog():
-    command = '.\\bin\\EvtxECmd\\EvtxECmd.exe -f "sample\C\Windows\System32\winevt\logs\Security.evtx" --inc 4688 --json output --jsonf evtx.json'
-    os.system(command)
+    # command = '.\\bin\\EvtxECmd\\EvtxECmd.exe -f "sample\C\Windows\System32\winevt\logs\Security.evtx" --inc 4688 --json output --jsonf evtx.json'
+    # os.system(command)
     first_line_flag = 1
     with open("output\\evtx.json") as jsonfile:
         for line in jsonfile:
@@ -69,9 +66,8 @@ def timeline_lnkfiles():
     pass
 
 def timeline_prefetch():
-    
-    command = '.\\bin\\PECmd.exe -q -d "sample\C\Windows\prefetch" --json output --jsonf temp.json'
-    os.system(command)
+    # command = '.\\bin\\PECmd.exe -q -d "sample\C\Windows\prefetch" --json output --jsonf temp.json'
+    # os.system(command)
     with open("output\\temp.json", encoding="utf8") as jsonfile:
         for line in jsonfile:
             
@@ -98,11 +94,29 @@ def timeline_prefetch():
             EXECUTION_LIST.append(first_run_list)
             EXECUTION_LIST.append(last_run_list)
 
+def timeline_shimcache():
+    command = '.\\bin\\regripper\\rip.exe -r "sample/C/Windows/System32/config/SYSTEM" -p appcompatcache_tln'
+    # Read from 7th line onwards as the first 7 lines are plugin information
+    # Last line is ommited as it is a blank line
+    command_output = os.popen(command).read().split('\n')[7:-1]
+
+    # Command output is delimited with '|' character
+    for line in command_output:
+        shimcache_list = ["Shimcache"]
+        epoch_time = line.split('|')[0]
+        # Further slice the 4th field of command output with '-' character to extract only the Executable path
+        # TO-DO: Further improve by checking if executable path starts with drive letter. 
+        executable_path = line.split('|')[4].split('-')[1]
+        shimcache_list.append(int(epoch_time))
+        shimcache_list.append(executable_path)
+        EXECUTION_LIST.append(shimcache_list)
+
 def main():
-    timeline_prefetch()
+
+    # timeline_prefetch()
     timeline_amcache()
-    timeline_runmru()
     timeline_userassist()
+    # timeline_shimcache()
     # timeline_eventlog()
     timeline_lnkfiles()
     # Reference: https://www.geeksforgeeks.org/python-sort-list-according-second-element-sublist/

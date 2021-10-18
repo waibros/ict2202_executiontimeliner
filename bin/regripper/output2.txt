@@ -1,0 +1,683 @@
+appcompatcache_tln v.20190112
+(System) Parse files from System hive AppCompatCache
+
+ControlSet001\Control\Session Manager\AppCompatCache
+LastWrite Time: Thu Oct  7 12:27:06 2021 Z
+Signature: 0x34
+0|REG|||M... AppCompatCache - 00000009	0001000661470000	000a000027410000	8664	Microsoft.NET.Native.Runtime.1.6	8wekyb3d8bbwe	
+1172981099|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\hashcalc\setup.exe
+1608913196|REG|||M... AppCompatCache - C:\iDefense\SysAnalyzer\sysAnalyzer.exe
+1621715582|REG|||M... AppCompatCache - C:\Windows\system32\MpSigStub.exe
+1621667373|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\jds2600093.tmp\JRE8x64.exe
+1452807630|REG|||M... AppCompatCache - C:\Program Files\NoVirusThanks\Kernel-Mode Driver Loader\KernelModeDriverLoader.exe
+1457730976|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\find.exe
+1621715672|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\Microsoft\OneDrive\21.073.0411.0002\FileSyncConfig.exe
+1621717609|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\vcredist140\14.28.29914\VC_redist.x86.exe
+0|REG|||M... AppCompatCache - 00000000	0001000661470000	000a000027410000	8664	Microsoft.NET.Native.Runtime.1.6	8wekyb3d8bbwe	
+1553001339|REG|||M... AppCompatCache - C:\Windows\System32\smartscreen.exe
+1621675291|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\vim.flare\8.1.1.3\vim.installer.exe
+1536996536|REG|||M... AppCompatCache - C:\Windows\system32\notepad.exe
+1621718097|REG|||M... AppCompatCache - C:\Windows\Microsoft.NET\Framework64\v4.0.30319\mscorsvw.exe
+1553028983|REG|||M... AppCompatCache - C:\Program Files\WindowsApps\Microsoft.WindowsAlarms_10.1805.1361.0_x64__8wekyb3d8bbwe\Application
+1621667531|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\is-BF259.tmp\vb_decompiler_lite.tmp
+1536996558|REG|||M... AppCompatCache - C:\Windows\system32\iscsicpl.exe
+1553029002|REG|||M... AppCompatCache - C:\Program Files\WindowsApps\Microsoft.XboxApp_41.41.18001.0_x64__8wekyb3d8bbwe\Application
+1553028957|REG|||M... AppCompatCache - C:\Program Files\WindowsApps\Microsoft.Messaging_3.43.27001.0_x64__8wekyb3d8bbwe\Application
+1621667166|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\resharper-platform\JetBrains.dotUltimate.2021.1.2.exe
+1553028970|REG|||M... AppCompatCache - C:\Program Files\WindowsApps\Microsoft.OneConnect_5.1807.1991.0_x64__8wekyb3d8bbwe\Application
+0|REG|||M... AppCompatCache - 00000009	07d046a104da0000	000a000045180000	8664	Microsoft.MixedReality.Portal	8wekyb3d8bbwe	
+1527535726|REG|||M... AppCompatCache - C:\iDefense\SysAnalyzer\api_logger.exe
+1536996520|REG|||M... AppCompatCache - C:\Windows\System32\CloudExperienceHostBroker.exe
+1621715471|REG|||M... AppCompatCache - C:\Windows\Temp\{E6E6404B-1F59-4EAB-A1B9-EA1A33B71159}~setup\vcredist_x86.exe
+1621717621|REG|||M... AppCompatCache - C:\Windows\Temp\{45C1331F-9358-428C-B323-3B2734E0986D}\.be\VC_redist.x64.exe
+1429040222|REG|||M... AppCompatCache - C:\iDefense\SysAnalyzer\proc_watch.exe
+1537002513|REG|||M... AppCompatCache - C:\Windows\System32\unregmp2.exe
+1536996516|REG|||M... AppCompatCache - C:\Windows\System32\wuapihost.exe
+1536996526|REG|||M... AppCompatCache - C:\Windows\system32\lsass.exe
+1536996519|REG|||M... AppCompatCache - C:\Windows\system32\ApplicationFrameHost.exe
+1621666821|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\radare2_installer.exe
+1486150855|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\ln.exe
+1621667331|REG|||M... AppCompatCache - C:\Program Files (x86)\Java\jre1.8.0_291\bin\ssvagent.exe
+1610598990|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\lessmsi\tools\lessmsi.exe
+1621718975|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\syspin\tools\syspin.exe
+1537002499|REG|||M... AppCompatCache - C:\Program Files\Common Files\Microsoft Shared\Ink\mip.exe
+1553000893|REG|||M... AppCompatCache - C:\ProgramData\Microsoft\Windows Defender\platform\4.18.1902.2-0\NisSrv.exe
+1618543220|REG|||M... AppCompatCache - C:\Windows\TEMP\vmware-SYSTEM\VMwareToolsUpgrader.exe
+1621717517|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\vcredist2010\10.0.40219.32503\vcredist_x86.exe
+1621674449|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\py2exedecompiler.flare\tools\Py2ExeDecompiler.exe
+1303198210|REG|||M... AppCompatCache - c:\b3100ef57906ddeaf2e2a0a2\install.exe
+1486150848|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\cat.exe
+0|REG|||M... AppCompatCache - 00000009	000a070d05510000	0000000000000000	8664	Microsoft.WindowsAlarms	8wekyb3d8bbwe	
+1486150856|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\md5sum.exe
+1536996594|REG|||M... AppCompatCache - C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+1620446315|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\autohotkey.portable\tools\AutoHotkey.exe
+1536996556|REG|||M... AppCompatCache - C:\Windows\System32\msdtc.exe
+1621672443|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\bin\apimonitor-x86.exe
+1553001346|REG|||M... AppCompatCache - C:\Windows\system32\SppExtComObj.exe
+0|REG|||M... AppCompatCache - 0000000b	03e8456300010000	000a000000000000	8664	Microsoft.Windows.PinningConfirmationDialog	cw5n1h2txyewy	
+0|REG|||M... AppCompatCache - 0000000b	03e8456300010000	000a0000295b0000	8664	Microsoft.AAD.BrokerPlugin	cw5n1h2txyewy	neutral
+1536996554|REG|||M... AppCompatCache - C:\Windows\System32\setx.exe
+1536996525|REG|||M... AppCompatCache - C:\Windows\system32\makecab.exe
+1366256929|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\dnsd.flare\tools\DNSD.exe
+1350834252|REG|||M... AppCompatCache - C:\Program Files\NTCore\Explorer Suite\Task Explorer.exe
+1621672237|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\is-CASIA.tmp\processhacker-2.39-setup.tmp
+1620866210|REG|||M... AppCompatCache - C:\Program Files\Microsoft VS Code\Code.exe
+1551573936|REG|||M... AppCompatCache - C:\Windows\system32\FlashPlayerCPLApp.cpl
+1536996516|REG|||M... AppCompatCache - C:\Windows\system32\pnputil.exe
+1486150848|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\basename.exe
+1599496669|REG|||M... AppCompatCache - C:\Program Files\010 Editor\assistant.exe
+1621718413|REG|||M... AppCompatCache - C:\ProgramData\Microsoft\VisualStudio\Packages\Win10SDK_10.0.17763,version=10.0.17763.2\winsdkinstaller.exe
+1614625902|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\hashmyfiles.flare\tools\HashMyFiles.exe
+0|REG|||M... AppCompatCache - 00000009	000e001a005f0000	000a000042ee0000	8664	Microsoft.SkypeApp	kzf8qxf38zg5c	
+1621666772|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\idafree70.flare\tools\idafree70_windows.exe
+1553001333|REG|||M... AppCompatCache - C:\Windows\system32\devicecensus.exe
+1536996565|REG|||M... AppCompatCache - C:\Windows\system32\srtasks.exe
+1604387526|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\Programs\Fiddler\SetupHelper
+1429448274|REG|||M... AppCompatCache - C:\Windows\Temp\ultradefrag-portable-6.1.0.i386\udefrag.exe
+1618596650|REG|||M... AppCompatCache - C:\Windows\system32\vm3dservice.exe
+1284512566|REG|||M... AppCompatCache - C:\Tools\ImpRec\ImpREC 1.7e\ImportREC.exe
+0|REG|||M... AppCompatCache - 0000000b	0001000b00054563	000a000045630000	8664	Microsoft.Windows.Cortana	cw5n1h2txyewy	neutral
+0|REG|||M... AppCompatCache - 0000000b	03e8456300010000	000c000000000000	8664	Microsoft.MicrosoftEdgeDevToolsClient	8wekyb3d8bbwe	neutral
+1536996522|REG|||M... AppCompatCache - C:\Windows\system32\psr.exe
+1616380496|REG|||M... AppCompatCache - C:\Program Files\Notepad++\notepad++.exe
+0|REG|||M... AppCompatCache - 0000000b	000a0000000203e8	000a000045630001	8664	windows.immersivecontrolpanel	cw5n1h2txyewy	neutral
+1521709481|REG|||M... AppCompatCache - C:\Program Files\VMware\VMware Tools\TPAutoConnect.exe
+1536991767|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\Temp\D634EA12-9CCB-4D75-BC54-1C00E2CECADA\dismhost.exe
+1389235040|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\exe2aut.fireeye\tools\Exe2Aut\Exe2Aut.exe
+1605096810|REG|||M... AppCompatCache - c:\iDefense\MAP\ShellExt.exe
+0|REG|||M... AppCompatCache - 0000000b	000a000045630001	000a000000000000	8664	Microsoft.LockApp	cw5n1h2txyewy	
+1618596430|REG|||M... AppCompatCache - C:\Program Files\VMware\VMware Tools\vmtoolsd.exe
+1604387390|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\Programs\Fiddler\ScriptEditor\FSE2.exe
+1536996562|REG|||M... AppCompatCache - C:\Windows\system32\RecoveryDrive.exe
+1621718316|REG|||M... AppCompatCache - C:\Program Files (x86)\Microsoft Visual Studio\Installer\vs_installer.windows.exe
+1606449680|REG|||M... AppCompatCache - C:\Program Files (x86)\VB Decompiler Lite\VB Decompiler.exe
+1553000683|REG|||M... AppCompatCache - C:\Windows\system32\MRT.exe
+1621673546|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\is-3OM58.tmp\kernel-mode-driver-loader-setup.tmp
+1553001337|REG|||M... AppCompatCache - C:\Windows\Explorer.EXE
+1621715585|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\Microsoft\OneDrive\Update\OneDriveSetup.exe
+1621715485|REG|||M... AppCompatCache - C:\ProgramData\Package Cache\{40d3fee2-b257-46c2-bdc0-cb1088d97327}\VC_redist.x64.exe
+1604964988|REG|||M... AppCompatCache - C:\Program Files\010 Editor\010Editor.exe
+1536996519|REG|||M... AppCompatCache - C:\Windows\system32\speech_onecore\common\SpeechModelDownload.exe
+0|REG|||M... AppCompatCache - 00000009	001122d617260000	000a000037b10000	8664	Microsoft.MicrosoftOfficeHub	8wekyb3d8bbwe	
+1536996524|REG|||M... AppCompatCache - C:\Windows\System32\vds.exe
+1536996554|REG|||M... AppCompatCache - C:\Windows\system32\hostname.EXE
+1536996524|REG|||M... AppCompatCache - C:\Windows\system32\taskhostw.exe
+1575695398|REG|||M... AppCompatCache - C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\windbg.exe
+0|REG|||M... AppCompatCache - 0000000b	000a000045630001	000a000045630001	8664	1527c705-839a-4832-9118-54d4Bd6a0c89	cw5n1h2txyewy	neutral
+1569456643|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\install-info.exe
+1536996586|REG|||M... AppCompatCache - C:\Windows\ImmersiveControlPanel\SystemSettings.exe
+1536996505|REG|||M... AppCompatCache - C:\Windows\system32\wbem\WmiApSrv.exe
+1553029000|REG|||M... AppCompatCache - C:\Program Files\WindowsApps\Microsoft.WindowsStore_11805.1001.49.0_x64__8wekyb3d8bbwe\Application
+1621715469|REG|||M... AppCompatCache - C:\Windows\TEMP\vmware-SYSTEM\00001c65\setup64.exe
+1461617038|REG|||M... AppCompatCache - C:\Program Files\Puppet Labs\Puppet\sys\ruby\bin\ruby.exe
+1621673598|REG|||M... AppCompatCache - C:\Program Files (x86)\Google\Update\Install\{4E35BD37-3208-4907-9907-39CC613A5BC3}\chrome_installer.exe
+1621671704|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\nmap.flare\7.70.0.2\nmap.flareInstall.exe
+1621668074|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\AutoItExtractor.fireeye\tools\AutoItExtractor.exe
+1536996505|REG|||M... AppCompatCache - \\?\C:\Windows\system32\wbem\WMIADAP.EXE
+1303211355|REG|||M... AppCompatCache - c:\695fbdcd9e33e8cea141\install.exe
+1536996509|REG|||M... AppCompatCache - C:\Windows\System32\RuntimeBroker.exe
+1536996530|REG|||M... AppCompatCache - C:\Windows\system32\dism.exe
+1536996514|REG|||M... AppCompatCache - C:\Windows\system32\wuauclt.exe
+1621717487|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\vcredist2008\9.0.30729.616104\vcredist_x86.exe
+1621718097|REG|||M... AppCompatCache - C:\Windows\Microsoft.NET\Framework\v4.0.30319\mscorsvw.exe
+1536996548|REG|||M... AppCompatCache - C:\Windows\SysWOW64\runonce.exe
+1536996512|REG|||M... AppCompatCache - C:\Windows\system32\Windows.WARP.JITService.exe
+1553001370|REG|||M... AppCompatCache - C:\Windows\system32\regedit.exe
+1487339277|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\dash.exe
+1621715655|REG|||M... AppCompatCache - C:\Windows\SoftwareDistribution\Download\Install\AM_Engine.exe
+0|REG|||M... AppCompatCache - 0000000b	002c456300010000	000a000045630000	8664	Microsoft.MicrosoftEdge	8wekyb3d8bbwe	
+1537002503|REG|||M... AppCompatCache - C:\Windows\system32\quickassist.exe
+1607402106|REG|||M... AppCompatCache - C:\Program Files (x86)\dnspy\dnSpy.exe
+1584499129|REG|||M... AppCompatCache - C:\iDefense\MAP\pecarve.exe
+1621324971|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\rebase.exe
+0|REG|||M... AppCompatCache - 00000000	0001000661470000	000a000027410000	8664	Microsoft.NET.Native.Framework.1.6	8wekyb3d8bbwe	
+1552679824|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\choco.exe
+1536996561|REG|||M... AppCompatCache - C:\Windows\system32\fondue.exe
+0|REG|||M... AppCompatCache - 00000009	0002000247030000	0000000000000000	8664	Microsoft.Wallet	8wekyb3d8bbwe	
+1621675594|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\map_setup.exe
+1536996562|REG|||M... AppCompatCache - C:\Windows\system32\SnippingTool.exe
+1521713479|REG|||M... AppCompatCache - C:\Windows\Temp\VMWare\setup.exe
+1621718316|REG|||M... AppCompatCache - C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe
+1536996518|REG|||M... AppCompatCache - C:\Windows\System32\cmd.exe
+1536996563|REG|||M... AppCompatCache - C:\Windows\System32\sdiagnhost.exe
+1621715485|REG|||M... AppCompatCache - C:\Windows\Temp\{FE860C45-B4EC-4FBD-816C-3D9458ABBE5D}\.be\VC_redist.x64.exe
+0|REG|||M... AppCompatCache - 00000009	0001070d091b0000	0000000000000000	8664	Microsoft.WindowsFeedbackHub	8wekyb3d8bbwe	
+0|REG|||M... AppCompatCache - 00000009	000407103aa40000	000a000042ef0000	8664	Microsoft.Microsoft3DViewer	8wekyb3d8bbwe	
+1536996596|REG|||M... AppCompatCache - C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe
+1536996564|REG|||M... AppCompatCache - C:\Windows\system32\winsat.exe
+1536996586|REG|||M... AppCompatCache - C:\Windows\system32\WindowsPowerShell\v1.0\PowerShell_ISE.exe
+1621672234|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\processhacker.install\2.39\processhacker-2.39-setup.exe
+1621673594|REG|||M... AppCompatCache - C:\Program Files (x86)\Google\Temp\GUM765D.tmp\GoogleUpdate.exe
+1552679824|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\bin\choco.exe
+1536996563|REG|||M... AppCompatCache - C:\Windows\System32\grpconv.exe
+1621715468|REG|||M... AppCompatCache - C:\Windows\TEMP\vmware-SYSTEM\00001c65\setup.exe
+1598299730|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\uniextract2.fireeye\tools\UniExtract\UniExtract\UniExtract.exe
+1536991767|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\Temp\835E82DA-3DE9-407C-9D33-C8491A2AFB1F\dismhost.exe
+0|REG|||M... AppCompatCache - 0000000b	000a000045630001	000a000045630001	8664	Microsoft.AccountsControl	cw5n1h2txyewy	
+1536996505|REG|||M... AppCompatCache - C:\Windows\system32\wbem\mofcomp.exe
+1621673542|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\kmdloader.flare\1.2.20180705.5\kernel-mode-driver-loader-setup.exe
+1553000893|REG|||M... AppCompatCache - C:\ProgramData\Microsoft\Windows Defender\platform\4.18.1902.2-0\MpCmdRun.exe
+0|REG|||M... AppCompatCache - 0000000b	000a000045630001	000a000045630000	8664	Microsoft.Windows.CloudExperienceHost	cw5n1h2txyewy	neutral
+0|REG|||M... AppCompatCache - 00000009	0005070d05970000	0000000000000000	8664	Microsoft.WindowsMaps	8wekyb3d8bbwe	
+1521712836|REG|||M... AppCompatCache - C:\Program Files\VMware\VMware Tools\guestproxycerttool.exe
+1618676926|REG|||M... AppCompatCache - C:\Program Files\x64dbg\release\x64\x64dbg.exe
+1621668251|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\explorersuite.flare\0.0.0.2015\ExplorerSuite.exe
+0|REG|||M... AppCompatCache - 0000000b	000a000045630001	000a000045630001	8664	Microsoft.Windows.XGpuEjectDialog	cw5n1h2txyewy	neutral
+1536996538|REG|||M... AppCompatCache - C:\Windows\system32\oobe\oobeldr.exe
+1536996564|REG|||M... AppCompatCache - C:\Windows\System32\sihclient.exe
+1553001337|REG|||M... AppCompatCache - C:\Windows\system32\provtool.exe
+1617955692|REG|||M... AppCompatCache - C:\Program Files\Java\jre1.8.0_291\installer.exe
+1390647568|REG|||M... AppCompatCache - C:\iDefense\MAP\dirwatch_ui.exe
+1604387510|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\Programs\Fiddler\Fiddler.exe
+0|REG|||M... AppCompatCache - 00000000	000a070c00020000	000a000028000000	8664	Microsoft.Advertising.Xaml	8wekyb3d8bbwe	
+1303211355|REG|||M... AppCompatCache - c:\0d44ffe1b31dc1b68652a027f5c7\install.exe
+1536991767|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\Temp\A979FFDA-A28D-44FE-8382-D94EC82C13A9\dismhost.exe
+1536991767|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\Temp\CEFB0A89-A300-4959-B747-C955344DAB75\dismhost.exe
+1553000505|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\Microsoft\OneDrive\18.143.0717.0002\FileCoAuth.exe
+1621667332|REG|||M... AppCompatCache - C:\Program Files (x86)\Java\jre1.8.0_291\bin\unpack200.exe
+1535454306|REG|||M... AppCompatCache - C:\Tools\procdot\win64\procdot.exe
+1585345771|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\p11-kit.exe
+1621715849|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\Microsoft\OneDrive\OneDrive.exe
+1536996547|REG|||M... AppCompatCache - C:\Windows\SysWOW64\cmd.exe
+0|REG|||M... AppCompatCache - 0000000b	000a000045630001	000a000045630001	8664	Microsoft.Windows.PeopleExperienceHost	cw5n1h2txyewy	neutral
+1536996530|REG|||M... AppCompatCache - C:\Windows\sysnative\dism.exe
+1621719193|REG|||M... AppCompatCache - C:\Windows\Installer\{A5F504DF-2ED9-4A2D-A2F3-9D2750DD42D6}\python_icon.exe
+0|REG|||M... AppCompatCache - 0000000b	000a000045630001	000a000000000000	8664	Microsoft.Windows.OOBENetworkConnectionFlow	cw5n1h2txyewy	
+1256086946|REG|||M... AppCompatCache - C:\Program Files\NTCore\Explorer Suite\Tools\DriverList.exe
+1536996525|REG|||M... AppCompatCache - C:\Windows\system32\wlrmdr.exe
+1621715582|REG|||M... AppCompatCache - C:\Windows\SoftwareDistribution\Download\Install\MpSigStub.exe
+1621667397|REG|||M... AppCompatCache - C:\Program Files\Java\jre1.8.0_291\bin\javacpl.exe
+1536996553|REG|||M... AppCompatCache - C:\Windows\system32\SgrmBroker.exe
+1621717613|REG|||M... AppCompatCache - C:\Windows\Temp\{BB1C65DC-566E-4BCE-B742-0C9FE64ED202}\.be\VC_redist.x86.exe
+1537002507|REG|||M... AppCompatCache - C:\Program Files\internet explorer\iexplore.exe
+1384290355|REG|||M... AppCompatCache - C:\iDefense\SysAnalyzer\virustotal.exe
+1552679824|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\tools\shimgen.exe
+1621669604|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\notepadplusplus.install\tools\npp.7.9.5.Installer.x64.exe
+1553028943|REG|||M... AppCompatCache - C:\Windows\SystemApps\Microsoft.Windows.CloudExperienceHost_cw5n1h2txyewy\Application
+1536996563|REG|||M... AppCompatCache - C:\Windows\system32\RDSPnf.exe
+1553001870|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\Temp\{43D9111A-EA02-4682-BF3C-EFDCB62A89B0}~setup\vcredist_x64.exe
+1495270522|REG|||M... AppCompatCache - C:\Tools\HTTrack\httrack\WinHTTrack.exe
+1536996524|REG|||M... AppCompatCache - C:\Windows\system32\schtasks.exe
+0|REG|||M... AppCompatCache - 00000009	0004070f2efb0000	000a000042b70000	8664	Microsoft.MSPaint	8wekyb3d8bbwe	
+1521086433|REG|||M... AppCompatCache - C:\Program Files (x86)\Nmap\npcap-0.99-r2-oem.exe
+0|REG|||M... AppCompatCache - 00000009	0001000661470000	000a000027410000	8664	Microsoft.NET.Native.Framework.1.6	8wekyb3d8bbwe	
+0|REG|||M... AppCompatCache - 0000000b	000a000045630001	000a000000000000	8664	Microsoft.CredDialogHost	cw5n1h2txyewy	
+1586572516|REG|||M... AppCompatCache - C:\ProgramData\Microsoft\VisualStudio\SetupWMI\MofCompiler.exe
+1536996560|REG|||M... AppCompatCache - C:\Windows\system32\msiexec.exe
+1621715653|REG|||M... AppCompatCache - C:\Windows\SoftwareDistribution\Download\Install\AM_Delta.exe
+1621675322|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\Cygwin\tools\setup-x86_64.exe
+1461615543|REG|||M... AppCompatCache - C:\Program Files\Puppet Labs\Puppet\bin\run_puppet_interactive.bat
+1536991767|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\80BE6305-E66E-4B57-8A0C-46A8E256B329\dismhost.exe
+1536996524|REG|||M... AppCompatCache - C:\Windows\system32\dwm.exe
+1536996547|REG|||M... AppCompatCache - C:\Windows\SysWOW64\DllHost.exe
+1536996572|REG|||M... AppCompatCache - C:\Windows\SysWOW64\tasklist.exe
+1536996564|REG|||M... AppCompatCache - C:\Windows\system32\MdSched.exe
+1621667397|REG|||M... AppCompatCache - C:\Program Files\Java\jre1.8.0_291\bin\awt.dll
+1621671859|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\WinPcap\4.1.3.20161116\WinPcapInstall.exe
+1536996537|REG|||M... AppCompatCache - C:\WINDOWS\SYSTEM32\RUNDLL32.EXE
+1536991767|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\1F9657E1-14B1-4B65-9A71-994FC5BE3795\dismhost.exe
+1485544436|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\sh.exe
+1536996504|REG|||M... AppCompatCache - C:\Windows\System32\spoolsv.exe
+1553000893|REG|||M... AppCompatCache - C:\ProgramData\Microsoft\Windows Defender\platform\4.18.1902.2-0\MsMpEng.exe
+1536996554|REG|||M... AppCompatCache - C:\Windows\system32\cleanmgr.exe
+1552679824|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\tools\checksum.exe
+1621676221|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\is-QSE21.tmp\VSCodeSetup-x64-1.56.2.tmp
+1536996519|REG|||M... AppCompatCache - C:\Windows\system32\usoclient.exe
+1526660830|REG|||M... AppCompatCache - C:\Program Files (x86)\Vim\vim81\install.exe
+1620444170|REG|||M... AppCompatCache - C:\Program Files\Google\Chrome\Application\chrome.exe
+0|REG|||M... AppCompatCache - 0000000b	000a000045630001	000a000000000000	8664	Microsoft.Windows.SecureAssessmentBrowser	cw5n1h2txyewy	neutral
+1621717570|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\vcredist2013\12.0.40660.20180427\vcredist_x64.exe
+1536996525|REG|||M... AppCompatCache - C:\Windows\system32\LogonUI.exe
+1553001332|REG|||M... AppCompatCache - C:\Windows\system32\bcdedit.exe
+1487088353|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\grep.exe
+1621673604|REG|||M... AppCompatCache - C:\Program Files (x86)\Google\Update\Install\{4E35BD37-3208-4907-9907-39CC613A5BC3}\CR_24F00.tmp\setup.exe
+1537002593|REG|||M... AppCompatCache - C:\Windows\system32\wlms\wlms.exe
+1536996556|REG|||M... AppCompatCache - C:\Windows\system32\find.exe
+1617660144|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\ffdec.flare\tools\ffdec.exe
+1616946811|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\cutter.flare\tools\cutter\cutter.exe
+1250783802|REG|||M... AppCompatCache - C:\Program Files (x86)\FileInsight\FileInsight.exe
+1536996503|REG|||M... AppCompatCache - C:\Windows\system32\MDMAgent.exe
+0|REG|||M... AppCompatCache - 00000009	000a0000064a0000	000a000028000000	8664	Microsoft.Services.Store.Engagement	8wekyb3d8bbwe	
+1536996510|REG|||M... AppCompatCache - C:\Windows\system32\AppHostRegistrationVerifier.exe
+1597715970|REG|||M... AppCompatCache - C:\Python37\pythonw.exe
+0|REG|||M... AppCompatCache - 00000009	0005070d05970000	000a000042ed0000	8664	Microsoft.WindowsMaps	8wekyb3d8bbwe	
+1526660828|REG|||M... AppCompatCache - C:\Program Files (x86)\Vim\vim81\vim.exe
+1621667331|REG|||M... AppCompatCache - C:\Program Files (x86)\Java\jre1.8.0_291\bin\javaw.exe
+1536996524|REG|||M... AppCompatCache - C:\Windows\System32\vdsldr.exe
+1621672498|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\is-BIIPA.tmp\is-6TIPI.tmp
+1553001334|REG|||M... AppCompatCache - C:\Windows\system32\MusNotifyIcon.exe
+1575695398|REG|||M... AppCompatCache - C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\symchk.exe
+1553001548|REG|||M... AppCompatCache - C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\Application
+1536991767|REG|||M... AppCompatCache - C:\Windows\TEMP\69A3F79D-683A-4DB6-9C23-80BC527094AA\dismhost.exe
+0|REG|||M... AppCompatCache - 0000000b	000a000045630001	000a000045630001	8664	Microsoft.Windows.SecHealthUI	cw5n1h2txyewy	
+1536996567|REG|||M... AppCompatCache - C:\Windows\SysWOW64\reg.exe
+1621668255|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\is-CVQJ7.tmp\ExplorerSuite.tmp
+0|REG|||M... AppCompatCache - 00000009	0003000005f10000	000a000042ee0000	8664	Microsoft.Print3D	8wekyb3d8bbwe	
+0|REG|||M... AppCompatCache - 0000000b	0006000200010000	03e8456300010000	8664	Windows.PrintDialog	cw5n1h2txyewy	neutral
+0|REG|||M... AppCompatCache - 0000000b	000a000045630001	000a000042ee0000	8664	c5e2524a-ea46-4f67-841f-6a9465d9d515	cw5n1h2txyewy	neutral
+1621718410|REG|||M... AppCompatCache - C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\bin\HostX86\x86\cvtres.exe
+1621715472|REG|||M... AppCompatCache - C:\Windows\Temp\{E6E6404B-1F59-4EAB-A1B9-EA1A33B71159}~setup\vcredist_x64.exe
+1536996530|REG|||M... AppCompatCache - C:\Windows\system32\runonce.exe
+1350834102|REG|||M... AppCompatCache - C:\Program Files\NTCore\Explorer Suite\Signature Explorer.exe
+1456279114|REG|||M... AppCompatCache - C:\iDefense\SysAnalyzer\dirwatch_ui.exe
+0|REG|||M... AppCompatCache - 0000000b	000a000045630001	000a00003fab0000	8664	Microsoft.BioEnrollment	cw5n1h2txyewy	
+1536996561|REG|||M... AppCompatCache - C:\Windows\System32\FodHelper.exe
+1434281496|REG|||M... AppCompatCache - C:\Program Files\7-Zip\7zG.exe
+1621675781|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\fiddler\tools\FiddlerSetup.exe
+1621666806|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\Vector35\BinaryNinja\Uninstall.exe
+1534530762|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\ppee.fireeye\tools\PPEE\PPEE(puppy) 1.12\PPEE.exe
+0|REG|||M... AppCompatCache - 00000000	000e000063520000	000a0000273a0000	8664	Microsoft.VCLibs.140.00	8wekyb3d8bbwe	
+1536996537|REG|||M... AppCompatCache - C:\Windows\Speech\Common\sapisvr.exe
+1486150849|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\chmod.exe
+1553001338|REG|||M... AppCompatCache - C:\Windows\system32\SecurityHealthService.exe
+1597715968|REG|||M... AppCompatCache - C:\Python37\python.exe
+1618676899|REG|||M... AppCompatCache - C:\Program Files\x64dbg\release\x32\x32dbg.exe
+1536996522|REG|||M... AppCompatCache - C:\Windows\System32\fsquirt.exe
+1553028940|REG|||M... AppCompatCache - C:\Windows\SystemApps\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Application
+1582917958|REG|||M... AppCompatCache - C:\Program Files\HxD\HxD.exe
+1621673604|REG|||M... AppCompatCache - C:\Program Files\Google\Chrome\Application\90.0.4430.212\Installer\chrmstp.exe
+1536996526|REG|||M... AppCompatCache - C:\WINDOWS\SYSTEM32\MUIUNATTEND.EXE
+1553028947|REG|||M... AppCompatCache - C:\Windows\SystemApps\ShellExperienceHost_cw5n1h2txyewy\Application
+1553028976|REG|||M... AppCompatCache - C:\Program Files\WindowsApps\Microsoft.SkypeApp_14.26.95.0_x64__kzf8qxf38zg5c\Application
+1461615543|REG|||M... AppCompatCache - C:\Program Files\Puppet Labs\Puppet\bin\run_facter_interactive.bat
+1551996423|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\is-9P324.tmp\vcredist_x64.exe
+0|REG|||M... AppCompatCache - 0000000b	03e8456300010000	03e8456300010000	8664	InputApp	cw5n1h2txyewy	neutral
+1536996538|REG|||M... AppCompatCache - C:\Windows\system32\oobe\windeploy.exe
+1621666825|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\is-MMO7S.tmp\radare2_installer.tmp
+1621717613|REG|||M... AppCompatCache - C:\Windows\Temp\{ED49CAB4-9A3B-4929-A76D-301D1972B643}\.cr\VC_redist.x86.exe
+1536996571|REG|||M... AppCompatCache - C:\Windows\SYSTEM32\regedt32.exe
+1621667368|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\jre8\8.0.2910.10\JRE8x64.exe
+0|REG|||M... AppCompatCache - 00000009	3e8127f44e230000	000a00003f3e0000	8664	Microsoft.Office.OneNote	8wekyb3d8bbwe	
+1536996558|REG|||M... AppCompatCache - C:\Windows\hh.exe
+1618595436|REG|||M... AppCompatCache - C:\Program Files\VMware\VMware Tools\VMware VGAuth\VGAuthService.exe
+1608991556|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\PeStudio\tools\pestudio\pestudio.exe
+1618490694|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\mintty.exe
+1553000512|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\Microsoft\OneDrive\OneDriveStandaloneUpdater.exe
+0|REG|||M... AppCompatCache - 00000009	000a46844ef30000	000a0000428b0000	8664	Microsoft.ZuneVideo	8wekyb3d8bbwe	
+1536996564|REG|||M... AppCompatCache - C:\Windows\system32\msinfo32.exe
+1536996535|REG|||M... AppCompatCache - C:\Windows\system32\DrvInst.exe
+1536996524|REG|||M... AppCompatCache - C:\Windows\system32\narrator.exe
+0|REG|||M... AppCompatCache - 00000009	2e1d03e900310000	000a000042d20000	8664	Microsoft.WindowsStore	8wekyb3d8bbwe	
+1585345777|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\trust.exe
+1540356089|REG|||M... AppCompatCache - c:\5752171d4ebdbaa67c84aad7b2dd2b84\install.exe
+1536996523|REG|||M... AppCompatCache - C:\Windows\system32\osk.exe
+1536996552|REG|||M... AppCompatCache - C:\Windows\syswow64\WOWReg32.exe
+1553028953|REG|||M... AppCompatCache - C:\Program Files\WindowsApps\Microsoft.BingWeather_4.25.12127.0_x64__8wekyb3d8bbwe\Application
+1621718295|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\visualstudio2017buildtools\15.9.36.0\vs_BuildTools.exe
+1536996506|REG|||M... AppCompatCache - C:\Program Files\Windows Defender\NisSrv.exe
+1536996568|REG|||M... AppCompatCache - C:\Windows\SysWOW64\find.exe
+1536996567|REG|||M... AppCompatCache - C:\Windows\system32\net1.exe
+1536996506|REG|||M... AppCompatCache - C:\Program Files\Windows Defender\MpCmdRun.exe
+0|REG|||M... AppCompatCache - 00000009	000a070c00020000	000a000028000000	8664	Microsoft.Advertising.Xaml	8wekyb3d8bbwe	
+1536991767|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\Temp\D5ED0AC3-5FDF-4768-8110-A0AF17F0449B\dismhost.exe
+0|REG|||M... AppCompatCache - 0000000b	000a000045630001	000a000038390000	8664	Microsoft.ECApp	8wekyb3d8bbwe	
+0|REG|||M... AppCompatCache - 00000009	00020000000d0000	000a000042af0000	8664	Microsoft.MicrosoftStickyNotes	8wekyb3d8bbwe	
+1553001548|REG|||M... AppCompatCache - C:\Windows\SystemApps\InputApp_cw5n1h2txyewy\Application
+1536996525|REG|||M... AppCompatCache - C:\Windows\system32\ctfmon.exe
+1621718097|REG|||M... AppCompatCache - C:\Windows\Microsoft.NET\Framework64\v4.0.30319\NGenTask.exe
+1447775423|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\spystudio\tools\SpyStudio.exe
+1336600901|REG|||M... AppCompatCache - C:\iDefense\SysAnalyzer\win_dump.exe
+0|REG|||M... AppCompatCache - 00000009	0011247253750000	0000000000000000	8664	microsoft.windowscommunicationsapps	8wekyb3d8bbwe	
+1463946260|REG|||M... AppCompatCache - C:\iDefense\MAP\fakeDNS.exe
+1536996514|REG|||M... AppCompatCache - C:\Windows\system32\sihost.exe
+0|REG|||M... AppCompatCache - 00000009	0029002946510000	0000000000000000	8664	Microsoft.XboxApp	8wekyb3d8bbwe	
+1548601102|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\idr.small.flare\tools\idr\Idr.exe
+1575689388|REG|||M... AppCompatCache - C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\gflags.exe
+0|REG|||M... AppCompatCache - 00000009	0029002946510000	000a00003f810000	8664	Microsoft.XboxApp	8wekyb3d8bbwe	
+1536996519|REG|||M... AppCompatCache - C:\Windows\System32\SecurityHealthSystray.exe
+1617971134|REG|||M... AppCompatCache - C:\Program Files (x86)\Java\jre1.8.0_291\installer.exe
+1536996567|REG|||M... AppCompatCache - C:\Windows\SysWOW64\PING.EXE
+0|REG|||M... AppCompatCache - 0000000b	000a000045630001	000a000045630001	8664	Microsoft.Windows.CapturePicker	cw5n1h2txyewy	
+1536996568|REG|||M... AppCompatCache - C:\Windows\SysWOW64\net.exe
+1621672442|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\bin\apimonitor-x64.exe
+1621669956|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\7zip.flare\15.05.1.2\7zip.flareInstall.exe
+1542296020|REG|||M... AppCompatCache - C:\Windows\Temp\sdelete.exe
+1486150853|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\expr.exe
+1575689398|REG|||M... AppCompatCache - C:\Program Files (x86)\Windows Kits\10\Debuggers\x86\windbg.exe
+0|REG|||M... AppCompatCache - 00000009	2e1d03e900080000	000a000042d20000	8664	Microsoft.StorePurchaseApp	8wekyb3d8bbwe	
+1536996538|REG|||M... AppCompatCache - C:\Windows\system32\SettingSyncHost.exe
+1621719200|REG|||M... AppCompatCache - C:\Windows\Temp\{57169849-B598-4A5B-97ED-667056389E2C}\.cr\python-3.7.9-amd64.exe
+1536996587|REG|||M... AppCompatCache - C:\Windows\system32\RAServer.exe
+1553000566|REG|||M... AppCompatCache - C:\Windows\SoftwareDistribution\Download\Install\Windows-KB890830-x64-V5.70.exe
+1553001548|REG|||M... AppCompatCache - C:\Windows\SystemApps\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\Application
+1540284072|REG|||M... AppCompatCache - C:\Program Files (x86)\Windows Kits\10\bin\10.0.17763.0\x86\rc.exe
+1621675149|REG|||M... AppCompatCache - C:\Program Files\NASM\Uninstall.exe
+1621717576|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\vcredist2013\12.0.40660.20180427\vcredist_x86.exe
+1536996560|REG|||M... AppCompatCache - C:\Windows\system32\OptionalFeatures.EXE
+1553001334|REG|||M... AppCompatCache - C:\Windows\system32\MusNotification.exe
+1536996526|REG|||M... AppCompatCache - C:\Windows\system32\wermgr.exe
+1621675643|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\is-86BQB.tmp\SysAnalyzer_Setup.tmp
+1553028982|REG|||M... AppCompatCache - C:\Program Files\WindowsApps\Microsoft.Windows.Photos_2018.18051.21218.0_x64__8wekyb3d8bbwe\Application
+1536996535|REG|||M... AppCompatCache - C:\Windows\system32\oobe\msoobe.exe
+1621675188|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\PDFStreamDumper_Setup.exe
+1540285840|REG|||M... AppCompatCache - C:\Program Files (x86)\Windows Kits\10\App Certification Kit\appcertui.exe
+0|REG|||M... AppCompatCache - 00000009	07e201a900780000	000a000042ee0000	8664	Microsoft.WindowsCamera	8wekyb3d8bbwe	
+0|REG|||M... AppCompatCache - 00000009	000e000063520000	000a0000273a0000	8664	Microsoft.VCLibs.140.00	8wekyb3d8bbwe	
+1619027680|REG|||M... AppCompatCache - C:\Program Files\Wireshark\Wireshark.exe
+1536996562|REG|||M... AppCompatCache - C:\Windows\system32\charmap.exe
+1536996533|REG|||M... AppCompatCache - C:\Windows\system32\mspaint.exe
+1621718980|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\bin\syspin.exe
+1486150864|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\test.exe
+1621666774|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\is-6VND0.tmp\idafree70_windows.tmp
+1486150856|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\mkdir.exe
+1621718411|REG|||M... AppCompatCache - C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\cl.exe
+1536996538|REG|||M... AppCompatCache - C:\Windows\system32\GenValObj.exe
+1553001334|REG|||M... AppCompatCache - C:\Windows\system32\MusNotificationUx.exe
+0|REG|||M... AppCompatCache - 00000000	0004000114840000	0000000000000000	8664	Microsoft.MicrosoftSolitaireCollection	8wekyb3d8bbwe	
+1621668486|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\is-TK21J.tmp\Sublime Text Build 3211 x64 Setup.tmp
+1521712590|REG|||M... AppCompatCache - C:\Program Files\VMware\VMware Tools\vmacthlp.exe
+1621675192|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\is-44PNI.tmp\PDFStreamDumper_Setup.tmp
+0|REG|||M... AppCompatCache - 00000009	000a46844ef30000	000a0000428b0000	8664	Microsoft.ZuneMusic	8wekyb3d8bbwe	
+1353280510|REG|||M... AppCompatCache - C:\Program Files\NTCore\Explorer Suite\CFF Explorer.exe
+1553001342|REG|||M... AppCompatCache - C:\Windows\system32\SearchFilterHost.exe
+1621675639|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\SysAnalyzer_Setup.exe
+1536996570|REG|||M... AppCompatCache - C:\Windows\SysWOW64\fondue.exe
+0|REG|||M... AppCompatCache - 0000000b	000a000045630001	000a000000000000	8664	Microsoft.Windows.OOBENetworkCaptivePortal	cw5n1h2txyewy	
+1621667331|REG|||M... AppCompatCache - C:\Program Files (x86)\Java\jre1.8.0_291\bin\awt.dll
+1552679824|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\bin\cinst.exe
+1536996559|REG|||M... AppCompatCache - C:\Windows\system32\odbcad32.exe
+1536996506|REG|||M... AppCompatCache - C:\Program Files\Windows Defender\MsMpEng.exe
+1553000870|REG|||M... AppCompatCache - C:\Windows\SoftwareDistribution\Download\Install\UpdatePlatform.exe
+1252801095|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\offvis.flare\tools\OffVis.exe
+1598496984|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\bc8868e787c47932cf42f7d345\vs_bootstrapper_d15\vs_setup_bootstrapper.exe
+1536996536|REG|||M... AppCompatCache - C:\Windows\SYSTEM32\getmac.exe
+1621715474|REG|||M... AppCompatCache - C:\Windows\Temp\{0C5187A0-9126-415A-A063-CE47506C6309}\.be\VC_redist.x86.exe
+1621673594|REG|||M... AppCompatCache - C:\Program Files (x86)\Google\Update\1.3.36.81\GoogleUpdateComRegisterShell64.exe
+1621667397|REG|||M... AppCompatCache - C:\Program Files\Java\jre1.8.0_291\bin\javaws.exe
+1621715842|REG|||M... AppCompatCache - C:\Windows\SoftwareDistribution\Download\Install\AM_Base.exe
+1536996519|REG|||M... AppCompatCache - C:\Windows\System32\Speech_OneCore\Common\SpeechRuntime.exe
+0|REG|||M... AppCompatCache - 0000000b	000a000045630001	000a000045630001	8664	Microsoft.Windows.ShellExperienceHost	cw5n1h2txyewy	neutral
+0|REG|||M... AppCompatCache - 0000000b	03e8456300010000	000a000000000000	8664	Microsoft.XboxGameCallableUI	cw5n1h2txyewy	neutral
+0|REG|||M... AppCompatCache - 00000009	0001000055fb0000	000a000045280000	8664	Microsoft.DesktopAppInstaller	8wekyb3d8bbwe	
+1486150865|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\touch.exe
+1553001828|REG|||M... AppCompatCache - C:\Windows\System32\OpenSSH\sshd.exe
+1486150857|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\mv.exe
+1536996524|REG|||M... AppCompatCache - C:\Windows\system32\tzsync.exe
+1621667397|REG|||M... AppCompatCache - C:\Program Files\Java\jre1.8.0_291\bin\jp2launcher.exe
+0|REG|||M... AppCompatCache - 0000000b	000a000045630001	000a0000452b0000	8664	Microsoft.Windows.NarratorQuickStart	8wekyb3d8bbwe	neutral
+1553001342|REG|||M... AppCompatCache - C:\Windows\system32\SearchProtocolHost.exe
+1621717618|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\vcredist140\14.28.29914\VC_redist.x64.exe
+1536996536|REG|||M... AppCompatCache - C:\Windows\system32\powercfg.exe
+1536996525|REG|||M... AppCompatCache - C:\Windows\system32\svchost.exe
+1540318388|REG|||M... AppCompatCache - C:\Windows\System32\appverif.exe
+1552679824|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\tools\7z.exe
+1553000589|REG|||M... AppCompatCache - C:\Windows\Installer\MSIDD42.tmp
+0|REG|||M... AppCompatCache - 00000009	000a070d05510000	000a000042ed0000	8664	Microsoft.WindowsAlarms	8wekyb3d8bbwe	
+1621667397|REG|||M... AppCompatCache - C:\Program Files\Java\jre1.8.0_291\bin\javaw.exe
+1575691969|REG|||M... AppCompatCache - C:\Program Files (x86)\Windows Kits\10\Debuggers\arm\gflags.exe
+1536996525|REG|||M... AppCompatCache - C:\Windows\System32\wsqmcons.exe
+1536996568|REG|||M... AppCompatCache - c:\Windows\syswow64\MsiExec.exe
+1621668209|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\010editor.flare\11.0.1.0\010EditorWin64Installer11.0.1.exe
+1536996567|REG|||M... AppCompatCache - C:\Windows\SysWOW64\netsh.exe
+1621671852|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\bin\AutoHotkey.exe
+1615313314|REG|||M... AppCompatCache - C:\Program Files\Wireshark\vcredist_x64.exe
+1599861701|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\sysinternals\tools\procexp64.exe
+1604964982|REG|||M... AppCompatCache - C:\Program Files\010 Editor\unins00a.exe
+1536996530|REG|||M... AppCompatCache - C:\Windows\System32\shutdown.exe
+1536996524|REG|||M... AppCompatCache - C:\Windows\system32\Sysprep\sysprep.exe
+1536996538|REG|||M... AppCompatCache - C:\Windows\system32\verclsid.exe
+0|REG|||M... AppCompatCache - 00000009	07e2468352e20000	0000000000000000	8664	Microsoft.Windows.Photos	8wekyb3d8bbwe	
+0|REG|||M... AppCompatCache - 00000009	000a070d05510000	0000000000000000	8664	Microsoft.People	8wekyb3d8bbwe	
+1434281476|REG|||M... AppCompatCache - C:\Program Files\7-Zip\7zFM.exe
+1536996560|REG|||M... AppCompatCache - C:\Windows\system32\mmc.exe
+1536996506|REG|||M... AppCompatCache - C:\Windows\System32\Wbem\WMIC.exe
+1621669610|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\bin\notepad++.exe
+1536996519|REG|||M... AppCompatCache - C:\Windows\system32\vssvc.exe
+1621717621|REG|||M... AppCompatCache - C:\Windows\Temp\{74D209DC-DFBF-4D93-A99D-957B06BBCE5E}\.cr\VC_redist.x64.exe
+1553001548|REG|||M... AppCompatCache - C:\Windows\SystemApps\Microsoft.Windows.Cortana_cw5n1h2txyewy\Application
+1621675322|REG|||M... AppCompatCache - C:\Tools\cygwin\cygwinsetup.exe
+0|REG|||M... AppCompatCache - 00000009	0011247253750000	000a00003f3e0000	8664	microsoft.windowscommunicationsapps	8wekyb3d8bbwe	
+1429040222|REG|||M... AppCompatCache - C:\iDefense\MAP\proc_watch.exe
+1621717540|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\vcredist2012\11.0.61031\vcredist_x64.exe
+1621719004|REG|||M... AppCompatCache - C:\Windows\Installer\{16CD92A4-0152-4CB7-8FD6-9788D3363616}\python_icon.exe
+1585086652|REG|||M... AppCompatCache - C:\Tools\FakeNet-NG\fakenet1.4.11\fakenet.exe
+1606415106|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\vb_decompiler_lite.exe
+0|REG|||M... AppCompatCache - 00000009	000a070d04b10000	000a000042ed0000	8664	Microsoft.WindowsCalculator	8wekyb3d8bbwe	
+1553028992|REG|||M... AppCompatCache - C:\Program Files\WindowsApps\microsoft.windowscommunicationsapps_17.9330.21365.0_x64__8wekyb3d8bbwe\Application
+1536996504|REG|||M... AppCompatCache - C:\Windows\system32\control.exe
+1536996554|REG|||M... AppCompatCache - C:\Windows\System32\reg.exe
+1536996537|REG|||M... AppCompatCache - C:\Windows\System32\wscript.exe
+1536996563|REG|||M... AppCompatCache - C:\Windows\system32\mstsc.exe
+1536996525|REG|||M... AppCompatCache - C:\Windows\system32\DllHost.exe
+1569951308|REG|||M... AppCompatCache - C:\Program Files\Sublime Text 3\sublime_text.exe
+1553000891|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\Temp\6792C904-1DF6-4AA9-AE27-AA4769FC0F51\MpSigStub.exe
+0|REG|||M... AppCompatCache - 00000000	000a0000064a0000	000a000028000000	8664	Microsoft.Services.Store.Engagement	8wekyb3d8bbwe	
+1486150862|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\sort.exe
+1536996533|REG|||M... AppCompatCache - C:\Windows\system32\lpremove.exe
+1621717548|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\vcredist2012\11.0.61031\vcredist_x86.exe
+1621718099|REG|||M... AppCompatCache - C:\Windows\Microsoft.NET\Framework\v4.0.30319\Ngen.exe
+1621666774|REG|||M... AppCompatCache - C:\Program Files\IDA Freeware 7.0\unins000.exe
+1621673594|REG|||M... AppCompatCache - C:\Program Files (x86)\Google\Update\GoogleUpdate.exe
+1621717993|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\dotnetfx\4.8.0.20190930\ndp48-x86-x64-allos-enu.exe
+1621715472|REG|||M... AppCompatCache - C:\Windows\Temp\{59CE191E-B554-48E7-ACBF-03610EDEACB8}\.cr\vcredist_x86.exe
+1621674394|REG|||M... AppCompatCache - C:\Windows\Temp\{3915EE8A-7306-438D-9278-D1B9F934C6D4}\.cr\vcredist_x64.exe
+1553001342|REG|||M... AppCompatCache - C:\Windows\system32\SearchIndexer.exe
+1621667397|REG|||M... AppCompatCache - C:\Program Files\Java\jre1.8.0_291\bin\ssvagent.exe
+0|REG|||M... AppCompatCache - 0000000b	03e84563015c0000	000c000000000000	8664	Microsoft.MicrosoftEdgeDevToolsClient	8wekyb3d8bbwe	neutral
+0|REG|||M... AppCompatCache - 00000009	000c002c4e210000	000a000042ee0000	8664	Microsoft.XboxIdentityProvider	8wekyb3d8bbwe	
+1621675149|REG|||M... AppCompatCache - C:\Program Files\NASM\nasmpath.bat
+1621719201|REG|||M... AppCompatCache - C:\Windows\Temp\{C3CBDE39-C6D0-4733-A8C6-59CA1710E5A1}\.be\python-3.7.9-amd64.exe
+1553000602|REG|||M... AppCompatCache - C:\Windows\Installer\MSI1134.tmp
+1350833544|REG|||M... AppCompatCache - C:\Program Files\NTCore\Explorer Suite\PE Detective.exe
+1553000586|REG|||M... AppCompatCache - C:\Windows\Installer\MSID0FB.tmp
+0|REG|||M... AppCompatCache - 0000000b	000a000045630001	000a000045630001	8664	F46D4000-FD22-4DB4-AC8E-4E1DDDE828FE	cw5n1h2txyewy	neutral
+1621667317|REG|||M... AppCompatCache - C:\ProgramData\Oracle\Java\installcache\2544984.tmp\bspatch.exe
+1536996516|REG|||M... AppCompatCache - C:\Windows\system32\dashost.exe
+0|REG|||M... AppCompatCache - 00000000	0001000763bb0000	000a000027410000	8664	Microsoft.NET.Native.Runtime.1.7	8wekyb3d8bbwe	
+0|REG|||M... AppCompatCache - 00000009	0001000763bb0000	000a000027410000	8664	Microsoft.NET.Native.Runtime.1.7	8wekyb3d8bbwe	
+1621674577|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\Graphviz\2.47.1\graphvizInstall.exe
+1483999959|REG|||M... AppCompatCache - C:\iDefense\MAP\IDCDumpFix.exe
+1536996514|REG|||M... AppCompatCache - C:\Windows\System32\Upfc.exe
+1486150852|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\dirname.exe
+0|REG|||M... AppCompatCache - 0000000b	002c456300010000	000c000000000000	8664	Microsoft.MicrosoftEdge	8wekyb3d8bbwe	
+0|REG|||M... AppCompatCache - 00000009	00010020426d0000	0000000000000000	8664	Microsoft.XboxGameOverlay	8wekyb3d8bbwe	
+1621666795|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\binaryninja.flare\2.2.2487.0\BinaryNinja-demo.exe
+1536996527|REG|||M... AppCompatCache - C:\Windows\system32\fontdrvhost.exe
+1553001370|REG|||M... AppCompatCache - C:\Windows\regedit.exe
+1553001349|REG|||M... AppCompatCache - C:\Windows\system32\compattelrunner.exe
+1486831510|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\sed.exe
+1250784180|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\fileinsight.exe
+0|REG|||M... AppCompatCache - 00000009	0005070f07c70000	0000000000000000	8664	Microsoft.OneConnect	8wekyb3d8bbwe	
+1290139742|REG|||M... AppCompatCache - C:\Program Files (x86)\7-Zip\7zFM.exe
+0|REG|||M... AppCompatCache - 00000009	000a06aa28c90000	000a00003fab0000	8664	Microsoft.GetHelp	8wekyb3d8bbwe	
+1307864194|REG|||M... AppCompatCache - c:\55cfd8fba269fc136fa8f745e57e\Setup.exe
+1536996571|REG|||M... AppCompatCache - C:\Windows\SysWOW64\regsvr32.exe
+0|REG|||M... AppCompatCache - 00000009	000a070d07950000	000a000042ed0000	8664	Microsoft.WindowsSoundRecorder	8wekyb3d8bbwe	
+1619543375|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\ilspy\tools\ILSpy.exe
+0|REG|||M... AppCompatCache - 00000009	0006000d2d3d0000	000a000042ee0000	8664	Microsoft.Getstarted	8wekyb3d8bbwe	
+1604387586|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\nss7D9F.tmp\FiddlerSetup.exe
+1526660830|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\install.exe
+0|REG|||M... AppCompatCache - 0000000b	000a000045630001	000a000038390000	8664	Microsoft.AsyncTextService	8wekyb3d8bbwe	
+0|REG|||M... AppCompatCache - 00000009	000a46844ef30000	0000000000000000	8664	Microsoft.ZuneMusic	8wekyb3d8bbwe	
+0|REG|||M... AppCompatCache - 00000009	07e2468352e20000	000a000042ee0000	8664	Microsoft.Windows.Photos	8wekyb3d8bbwe	
+1536996505|REG|||M... AppCompatCache - C:\Windows\system32\dmclient.exe
+1621667307|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\jre8\8.0.2910.10\JRE8x86.exe
+1621715474|REG|||M... AppCompatCache - C:\ProgramData\Package Cache\{1aaa01ad-3069-4288-9c6f-37a140a8f6c7}\VC_redist.x86.exe
+1536996518|REG|||M... AppCompatCache - C:\Windows\system32\disksnapshot.exe
+1542686675|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\exeinfope.flare\tools\ExeinfoPe\exeinfope.exe
+1536996567|REG|||M... AppCompatCache - C:\Windows\system32\netsh.exe
+0|REG|||M... AppCompatCache - 00000009	000a070e08400000	000a000045170000	8664	Microsoft.ScreenSketch	8wekyb3d8bbwe	
+1616380526|REG|||M... AppCompatCache - C:\program files\notepad++\updater\gup.exe
+1587414372|REG|||M... AppCompatCache - C:\Python27\python.exe
+1540295464|REG|||M... AppCompatCache - C:\Windows\syswow64\appverif.exe
+1536996552|REG|||M... AppCompatCache - C:\Windows\SysWOW64\rundll32.exe
+1536996554|REG|||M... AppCompatCache - C:\Windows\system32\sc.exe
+1486150852|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\echo.exe
+1553001336|REG|||M... AppCompatCache - C:\Windows\System32\CompPkgSrv.exe
+0|REG|||M... AppCompatCache - 00000000	0001000763bb0000	000a000027410000	8664	Microsoft.NET.Native.Framework.1.7	8wekyb3d8bbwe	
+0|REG|||M... AppCompatCache - 00000009	000a070d05510000	000a000042ed0000	8664	Microsoft.People	8wekyb3d8bbwe	
+1444859478|REG|||M... AppCompatCache - C:\iDefense\MAP\sniff_hit.exe
+1536996556|REG|||M... AppCompatCache - C:\Windows\system32\dfrgui.exe
+1621668213|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\is-C1GP1.tmp\010EditorWin64Installer11.0.1.tmp
+0|REG|||M... AppCompatCache - 0000000b	000a000045630001	000a000042990000	8664	Windows.CBSPreview	cw5n1h2txyewy	neutral
+0|REG|||M... AppCompatCache - 0000000b	03e8456300010000	000a000000000000	8664	Microsoft.Windows.AssignedAccessLockApp	cw5n1h2txyewy	neutral
+1536996564|REG|||M... AppCompatCache - C:\Windows\System32\UNP\UpdateNotificationMgr.exe
+1621718099|REG|||M... AppCompatCache - C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Ngen.exe
+0|REG|||M... AppCompatCache - 00000009	001122d617260000	0000000000000000	8664	Microsoft.MicrosoftOfficeHub	8wekyb3d8bbwe	
+1536996540|REG|||M... AppCompatCache - C:\Windows\SysWOW64\ByteCodeGenerator.exe
+1619046030|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\sysinternals\tools\Procmon.exe
+1350834242|REG|||M... AppCompatCache - C:\Program Files\NTCore\Explorer Suite\Task Explorer-x64.exe
+1536991767|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\Temp\852DE2B4-535E-4A18-A709-0EEB2A6FE810\dismhost.exe
+1553000551|REG|||M... AppCompatCache - C:\Windows\SoftwareDistribution\Download\Install\Silverlight_x64.exe
+1553001346|REG|||M... AppCompatCache - C:\Windows\system32\sppsvc.exe
+1536996537|REG|||M... AppCompatCache - C:\Windows\System32\printui.exe
+1536996537|REG|||M... AppCompatCache - C:\Windows\system32\cscript.exe
+1553001336|REG|||M... AppCompatCache - C:\Windows\system32\browser_broker.exe
+1537002517|REG|||M... AppCompatCache - C:\Windows\System32\OpenSSH\scp.exe
+1621676217|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\vscode.install\1.56.2\VSCodeSetup-x64-1.56.2.exe
+1621718097|REG|||M... AppCompatCache - C:\Windows\Microsoft.NET\Framework\v4.0.30319\NGenTask.exe
+1537002513|REG|||M... AppCompatCache - C:\Program Files (x86)\Windows Media Player\wmplayer.exe
+1172981091|REG|||M... AppCompatCache - C:\Program Files (x86)\HashCalc\HashCalc.exe
+1536996522|REG|||M... AppCompatCache - C:\Windows\system32\utilman.exe
+1621675598|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\is-KD8T8.tmp\map_setup.tmp
+1536996509|REG|||M... AppCompatCache - C:\Windows\system32\ByteCodeGenerator.exe
+1536996525|REG|||M... AppCompatCache - C:\Windows\system32\userinit.exe
+1536991767|REG|||M... AppCompatCache - C:\Windows\servicing\TrustedInstaller.exe
+1616195955|REG|||M... AppCompatCache - C:\Program Files\Autopsy-4.18.0\bin\autopsy64.exe
+1621674582|REG|||M... AppCompatCache - C:\Program Files\Graphviz\Uninstall.exe
+1564021834|REG|||M... AppCompatCache - C:\decfee13b2f35d8d5d30d4379b6b96\Setup.exe
+1536996536|REG|||M... AppCompatCache - C:\Windows\system32\oobe\FirstLogonAnim.exe
+0|REG|||M... AppCompatCache - 00000009	000e001a005f0000	0000000000000000	8664	Microsoft.SkypeApp	kzf8qxf38zg5c	
+1536996554|REG|||M... AppCompatCache - C:\Windows\system32\defrag.exe
+1551996421|REG|||M... AppCompatCache - C:\Program Files\IDA Freeware 7.0\ida64.exe
+1553028696|REG|||M... AppCompatCache - C:\bginfo\Bginfo.exe
+1536996562|REG|||M... AppCompatCache - C:\Windows\System32\mobsync.exe
+1536996571|REG|||M... AppCompatCache - C:\Windows\SYSTEM32\certutil.exe
+1621717481|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\vcredist2008\9.0.30729.616104\vcredist_x64.exe
+1536996570|REG|||M... AppCompatCache - C:\Windows\syswow64\odbcad32.exe
+1521709481|REG|||M... AppCompatCache - C:\Program Files\VMware\VMware Tools\TPAutoConnSvc.exe
+1617971376|REG|||M... AppCompatCache - C:\Program Files (x86)\Common Files\Java\Java Update\jusched.exe
+1621669924|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\Temp\23717291-044b-4f2a-813e-468f3653dd1a.exe
+1486150860|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\rm.exe
+1621667397|REG|||M... AppCompatCache - C:\Program Files\Java\jre1.8.0_291\bin\unpack200.exe
+1597712548|REG|||M... AppCompatCache - C:\Windows\py.exe
+1526661380|REG|||M... AppCompatCache - C:\Program Files (x86)\Vim\vim81\gvim.exe
+1536991767|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\Temp\E61C7177-E481-4D20-9EF3-B8A6EEE81B8C\dismhost.exe
+1553029003|REG|||M... AppCompatCache - C:\Program Files\WindowsApps\Microsoft.XboxGameOverlay_1.32.17005.0_x64__8wekyb3d8bbwe\Application
+0|REG|||M... AppCompatCache - 00000009	0001000030350000	000a00003fab0000	8664	Microsoft.WebMediaExtensions	8wekyb3d8bbwe	
+1553001370|REG|||M... AppCompatCache - C:\Windows\SysWOW64\regedit.exe
+1621718409|REG|||M... AppCompatCache - C:\ProgramData\Microsoft\VisualStudio\Packages\Win10SDK_10.0.17763,version=10.0.17763.2\winsdksetup.exe
+1575695398|REG|||M... AppCompatCache - C:\Program Files (x86)\Windows Kits\10\Debuggers\x64\gflags.exe
+0|REG|||M... AppCompatCache - 0000000b	000a000045630001	000a000000000000	8664	Microsoft.PPIProjection	cw5n1h2txyewy	neutral
+1621715484|REG|||M... AppCompatCache - C:\Windows\Temp\{88499038-0DE0-4D8D-8387-54F60B7AB821}\.cr\vcredist_x64.exe
+1621667378|REG|||M... AppCompatCache - C:\ProgramData\Oracle\Java\installcache_x64\2605750.tmp\bspatch.exe
+1605828472|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\resourcehacker.flare\tools\ResourceHacker.exe
+1621718316|REG|||M... AppCompatCache - C:\Program Files (x86)\Microsoft Visual Studio\Installer\setup.exe
+1536991767|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\Temp\FB0CB2F4-7157-4222-ACD7-669A8BECE87C\dismhost.exe
+1536991770|REG|||M... AppCompatCache - C:\Windows\winsxs\amd64_microsoft-windows-servicingstack_31bf3856ad364e35_10.0.17763.164_none_7e114a3d4d0589d4\TiWorker.exe
+1303198210|REG|||M... AppCompatCache - c:\b1b4a6487d9ed7b94c6e\install.exe
+1582889551|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\HxD\tools\HxDSetup\HxDSetup.exe
+1536996571|REG|||M... AppCompatCache - C:\Windows\SysWOW64\certutil.exe
+1621717507|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\vcredist2010\10.0.40219.32503\vcredist_x64.exe
+1603318747|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\Vector35\BinaryNinja\binaryninja.exe
+1536996560|REG|||M... AppCompatCache - C:\Windows\system32\msconfig.exe
+1621719198|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\python3\tools\python-3.7.9-amd64.exe
+1621717443|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\vcredist2005\8.0.50727.619501\vcredist_x64.EXE
+1536996509|REG|||M... AppCompatCache - C:\Windows\system32\wbem\wmiprvse.exe
+1304957340|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\peview.flare\tools\PEview.exe
+0|REG|||M... AppCompatCache - 00000009	000400192f5f0000	0000000000000000	8664	Microsoft.BingWeather	8wekyb3d8bbwe	
+1609287752|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\ghidra.fireeye\tools\ghidra_9.2.2_PUBLIC\ghidraRun.bat
+1521713479|REG|||M... AppCompatCache - C:\Windows\Temp\VMWare\setup64.exe
+0|REG|||M... AppCompatCache - 00000009	00010020426d0000	000a00003fab0000	8664	Microsoft.XboxGameOverlay	8wekyb3d8bbwe	
+1536996524|REG|||M... AppCompatCache - C:\Windows\system32\magnify.exe
+1536996530|REG|||M... AppCompatCache - C:\Windows\system32\secinit.exe
+1621718533|REG|||M... AppCompatCache - C:\Windows\Temp\{8A22C424-D3C2-4881-9FEA-DF46BC5AFE99}\.be\winsdksetup.exe
+1621718097|REG|||M... AppCompatCache - C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe
+1041370411|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\lordpe.flare\tools\LordPE.EXE
+0|REG|||M... AppCompatCache - 00000009	0003002b69790000	000a00003ad70000	8664	Microsoft.Messaging	8wekyb3d8bbwe	
+1621717456|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\vcredist2005\8.0.50727.619501\vcredist_x86.EXE
+0|REG|||M... AppCompatCache - 0000000b	000a000045630001	000b000000000000	8664	Microsoft.Win32WebViewHost	cw5n1h2txyewy	neutral
+0|REG|||M... AppCompatCache - 0000000b	03e8456300010000	000a000000000000	8664	Microsoft.Windows.ParentalControls	cw5n1h2txyewy	neutral
+1536996553|REG|||M... AppCompatCache - C:\Windows\System32\WinBioPlugIns\FaceFodUninstaller.exe
+0|REG|||M... AppCompatCache - 00000000	0004000114840000	000a000042cd0000	8664	Microsoft.MicrosoftSolitaireCollection	8wekyb3d8bbwe	
+1536996571|REG|||M... AppCompatCache - C:\Windows\system32\regsvr32.exe
+1575693683|REG|||M... AppCompatCache - C:\Program Files (x86)\Windows Kits\10\Debuggers\arm64\gflags.exe
+0|REG|||M... AppCompatCache - 00000009	0001000763bb0000	000a000027410000	8664	Microsoft.NET.Native.Framework.1.7	8wekyb3d8bbwe	
+1536996559|REG|||M... AppCompatCache - C:\Windows\System32\LocationNotificationWindows.exe
+1621667331|REG|||M... AppCompatCache - C:\Program Files (x86)\Java\jre1.8.0_291\bin\jp2launcher.exe
+1621667312|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\jds2539281.tmp\JRE8x86.exe
+1621715672|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\Microsoft\OneDrive\21.073.0411.0002\FileCoAuth.exe
+1621673584|REG|||M... AppCompatCache - C:\Windows\Installer\MSI743D.tmp
+0|REG|||M... AppCompatCache - 00000009	000400192f5f0000	000a000042ee0000	8664	Microsoft.BingWeather	8wekyb3d8bbwe	
+1486150855|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\ls.exe
+1553028978|REG|||M... AppCompatCache - C:\Program Files\WindowsApps\Microsoft.Wallet_2.2.18179.0_x64__8wekyb3d8bbwe\Application
+1553001344|REG|||M... AppCompatCache - C:\Windows\system32\mcbuilder.exe
+1621675192|REG|||M... AppCompatCache - C:\PDFStreamDumper\unins000.exe
+1307864194|REG|||M... AppCompatCache - c:\e615438f6251f61982c922f2cf1c9d\Setup.exe
+1553000505|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\Microsoft\OneDrive\18.143.0717.0002\FileSyncConfig.exe
+1225745348|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\peid.flare\tools\PEiD.exe
+1618596414|REG|||M... AppCompatCache - C:\Program Files\VMware\VMware Tools\VMwareResolutionSet.exe
+1564021834|REG|||M... AppCompatCache - C:\decfee13b2f35d8d5d30d4379b6b96\SetupUtility.exe
+1536996525|REG|||M... AppCompatCache - C:\Windows\system32\services.exe
+1536991767|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\Temp\E95AC2D5-6717-48D6-ADC3-B532431ED82C\dismhost.exe
+1621675145|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\nasm\2.14.02\nasm-2.14.02-installer-x64.exe
+1536996561|REG|||M... AppCompatCache - C:\Windows\sysnative\FonDUE.EXE
+1536996568|REG|||M... AppCompatCache - C:\Windows\system32\net.exe
+1536996564|REG|||M... AppCompatCache - C:\Program Files\Windows NT\Accessories\wordpad.exe
+1536996537|REG|||M... AppCompatCache - C:\Windows\system32\oobe\setup.exe
+1621718099|REG|||M... AppCompatCache - C:\Windows\Microsoft.NET\Framework64\v4.0.30319\cvtres.exe
+1459280104|REG|||M... AppCompatCache - C:\Program Files\Process Hacker 2\peview.exe
+1621718316|REG|||M... AppCompatCache - C:\Program Files (x86)\Microsoft Visual Studio\Installer\vs_installer.exe
+0|REG|||M... AppCompatCache - 00000009	0002000247030000	000a00003fab0000	8664	Microsoft.Wallet	8wekyb3d8bbwe	
+1536996512|REG|||M... AppCompatCache - C:\Windows\system32\dxgiadaptercache.exe
+1536996567|REG|||M... AppCompatCache - C:\Windows\SysWOW64\net1.exe
+1437925516|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\regshot.flare\tools\Regshot-x64-Unicode.exe
+0|REG|||M... AppCompatCache - 00000009	000a46844ef30000	0000000000000000	8664	Microsoft.ZuneVideo	8wekyb3d8bbwe	
+0|REG|||M... AppCompatCache - 00000009	0005070f07c70000	000a000042ee0000	8664	Microsoft.OneConnect	8wekyb3d8bbwe	
+1536996525|REG|||M... AppCompatCache - C:\Windows\System32\SLUI.exe
+1621667331|REG|||M... AppCompatCache - C:\Program Files (x86)\Java\jre1.8.0_291\bin\javaws.exe
+1290139684|REG|||M... AppCompatCache - C:\Program Files (x86)\7-Zip\7z.exe
+1621718411|REG|||M... AppCompatCache - C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\link.exe
+1521709477|REG|||M... AppCompatCache - C:\Program Files\VMware\VMware Tools\TPVCGateway.exe
+0|REG|||M... AppCompatCache - 0000000b	000a000045630001	000a000045630001	8664	E2A4F912-2574-4A75-9BB0-0D023378592B	cw5n1h2txyewy	neutral
+1610325895|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\die.flare\tools\die_win32_portable\die.exe
+1536996587|REG|||M... AppCompatCache - C:\Windows\system32\WFS.exe
+1486150850|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\cp.exe
+1537002592|REG|||M... AppCompatCache - C:\Windows\SysWOW64\OneDriveSetup.exe
+1486150865|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\tr.exe
+1588215118|REG|||M... AppCompatCache - C:\Program Files\nodejs\node.exe
+1617007456|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\cygpath.exe
+1553028946|REG|||M... AppCompatCache - C:\Windows\SystemApps\Microsoft.Windows.SecHealthUI_cw5n1h2txyewy\Application
+0|REG|||M... AppCompatCache - 00000009	000a070d07950000	0000000000000000	8664	Microsoft.WindowsSoundRecorder	8wekyb3d8bbwe	
+1472226424|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\gzip.exe
+1540350398|REG|||M... AppCompatCache - C:\Program Files (x86)\Microsoft Silverlight\5.1.50918.0\coregen.exe
+1613196716|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\pebear.flare\tools\PE-bear.exe
+1505406780|REG|||M... AppCompatCache - C:\PDFStreamDumper\PDFStreamDumper.exe
+1536996571|REG|||M... AppCompatCache - C:\Windows\SysWOW64\regedt32.exe
+1444859478|REG|||M... AppCompatCache - C:\iDefense\SysAnalyzer\sniff_hit.exe
+0|REG|||M... AppCompatCache - 0000000b	000a000045630001	000a000000000000	8664	Microsoft.Windows.ContentDeliveryManager	cw5n1h2txyewy	neutral
+1536996556|REG|||M... AppCompatCache - C:\Windows\System32\ie4uinit.exe
+1553001870|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\Temp\{43D9111A-EA02-4682-BF3C-EFDCB62A89B0}~setup\vcredist_x86.exe
+1575693683|REG|||M... AppCompatCache - C:\Program Files (x86)\Windows Kits\10\Debuggers\arm64\windbg.exe
+1540351588|REG|||M... AppCompatCache - C:\Program Files\Microsoft Silverlight\5.1.50918.0\coregen.exe
+1540811475|REG|||M... AppCompatCache - C:\Program Files\Far Manager\Far.exe
+1459280102|REG|||M... AppCompatCache - C:\Program Files\Process Hacker 2\ProcessHacker.exe
+1486150866|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\uname.exe
+1621718532|REG|||M... AppCompatCache - C:\Windows\Temp\{C9B91B99-D247-479E-8C98-C4F7B4977FC8}\.cr\winsdksetup.exe
+0|REG|||M... AppCompatCache - 00000009	0001070d091b0000	000a00003fab0000	8664	Microsoft.WindowsFeedbackHub	8wekyb3d8bbwe	
+0|REG|||M... AppCompatCache - 0000000b	000a000045630001	000b000000000000	8664	Microsoft.Windows.CloudExperienceHost	cw5n1h2txyewy	neutral
+1485544436|REG|||M... AppCompatCache - C:\Tools\cygwin\bin\bash.exe
+1553001689|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\Temp\chocolatey\chocInstall\7za.exe
+1540351588|REG|||M... AppCompatCache - C:\Program Files\Microsoft Silverlight\5.1.50918.0\Silverlight.Configuration.exe
+1616752094|REG|||M... AppCompatCache - C:\Tools\Cmder\Cmder.exe
+0|REG|||M... AppCompatCache - 0000000b	03e8456300010000	000a000000000000	8664	Microsoft.Windows.Apprep.ChxApp	cw5n1h2txyewy	neutral
+1621667205|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\JetBrains\Installations\dotPeek211\dotPeek64.exe
+0|REG|||M... AppCompatCache - 00000009	0003002b69790000	0000000000000000	8664	Microsoft.Messaging	8wekyb3d8bbwe	
+1621676339|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\flarevm.win10.config.fireeye\tools\WallpaperChanger.exe
+1621674385|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\wireshark\tools\Wireshark-win64-3.4.5.exe
+1553000586|REG|||M... AppCompatCache - C:\Windows\Installer\MSID12B.tmp
+1621668179|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\is-37S7U.tmp\HxDSetup.tmp
+1628608969|REG|||M... AppCompatCache - C:\Users\IEUser\Desktop\mimikatz_trunk\x64\mimikatz.exe
+1536991770|REG|||M... AppCompatCache - C:\Windows\winsxs\amd64_microsoft-windows-servicingstack_31bf3856ad364e35_10.0.17763.1_none_fa254b2e1f73e660\TiWorker.exe
+1575691971|REG|||M... AppCompatCache - C:\Program Files (x86)\Windows Kits\10\Debuggers\arm\windbg.exe
+1618596636|REG|||M... AppCompatCache - C:\Program Files\Common Files\VMware\Drivers\vss\comreg.exe
+1520954215|REG|||M... AppCompatCache - C:\Program Files\Npcap\NPFInstall.exe
+1621673604|REG|||M... AppCompatCache - C:\Program Files\Google\Chrome\Application\90.0.4430.212\Installer\setup.exe
+1146158396|REG|||M... AppCompatCache - C:\iDefense\MAP\mail_pot.exe
+1536996532|REG|||M... AppCompatCache - C:\Windows\system32\consent.exe
+1537002517|REG|||M... AppCompatCache - C:\Windows\System32\OpenSSH\ssh-keygen.exe
+1536996554|REG|||M... AppCompatCache - C:\Windows\system32\ipconfig.exe
+1553001348|REG|||M... AppCompatCache - C:\Windows\system32\taskmgr.exe
+1621668482|REG|||M... AppCompatCache - C:\Users\IEUser\AppData\Local\ChocoCache\SublimeText3\3.2.2\Sublime Text Build 3211 x64 Setup.exe
+1577313776|REG|||M... AppCompatCache - C:\ProgramData\chocolatey\lib\jd-gui.flare\tools\jd-gui-windows-1.6.6\jd-gui.exe
+1536996510|REG|||M... AppCompatCache - C:\Windows\system32\dstokenclean.exe
