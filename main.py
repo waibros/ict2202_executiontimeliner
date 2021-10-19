@@ -1,4 +1,5 @@
-import os, json, datetime, io, re
+import os, json, datetime, io, re, csv
+from posixpath import dirname
 from glob import glob
 
 EXECUTION_LIST = []
@@ -22,7 +23,27 @@ def convert_to_epoch(datetime_string):
     
     return(int(epoch_time))
 
+def convert_csv_to_json(csvSource,jsonDestination):
+    #List to store data
+    data = []
+
+    #Open the CSV file, reading each line as a dictionary
+    with open(csvSource, encoding='utf-8') as csvFile:
+        csvFileReader = csv.DictReader(csvFile)
+
+        for rows in csvFileReader:
+            data.append(rows)
+    
+    #Dump data as a json file to defined destination
+    with open(jsonDestination, 'w', encoding='utf-8') as jsonFile:
+        for i in data:
+            jsonFile.write(json.dumps(i))
+
 def timeline_amcache():
+    # command = '.\bin\AmcacheParser.exe -f ".\sample\C\Windows\AppCompat\Programs\Amcache.hve" --csv ".\output" --csvf amcache.csv'
+    # os.system(command)
+    convert_csv_to_json(".\\output\\amcache_ShortCuts.csv", ".\\output\\ShortCuts.json")
+
     pass
 
 def timeline_userassist():
@@ -168,17 +189,17 @@ def main():
     timeline_userassist()
     # timeline_shimcache()
     # timeline_eventlog()
-    timeline_lnkfiles()
+    # timeline_lnkfiles()
     # Reference: https://www.geeksforgeeks.org/python-sort-list-according-second-element-sublist/
     # Sort the nested list EXECUTION_LIST by second element. 
-    sorted_execution_list = sorted(EXECUTION_LIST, key = lambda x: x[1])
+    #sorted_execution_list = sorted(EXECUTION_LIST, key = lambda x: x[1])
 
-    for item in sorted_execution_list:
+    #for item in sorted_execution_list:
         # Reference: https://www.javatpoint.com/python-epoch-to-datetime 
-        converted_datetime = datetime.datetime.fromtimestamp(item[1])
-        execution_source = item[0]
-        execution_sourcepath = item[2]
-        print(converted_datetime, execution_source, execution_sourcepath)
+    #    converted_datetime = datetime.datetime.fromtimestamp(item[1])
+    #    execution_source = item[0]
+    #    execution_sourcepath = item[2]
+    #    print(converted_datetime, execution_source, execution_sourcepath)
         # TO-DO: Save the list into CSV. 
 
 if __name__ == "__main__":
