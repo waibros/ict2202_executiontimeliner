@@ -1,4 +1,4 @@
-import os, json, datetime, io
+import os, json, datetime, io, re
 from glob import glob
 
 EXECUTION_LIST = []
@@ -62,6 +62,35 @@ def timeline_eventlog():
 
             EXECUTION_LIST.append(evtx_list)
                 
+def timeline_jumplist():
+    filelist=[]
+    # command = '.\\bin\\JLECmd.exe -q -d "sample\C" --json output'
+    # os.system(command)
+    outputdirectory = os.fsencode(".\\output")
+    for file in os.listdir(outputdirectory):
+        filename = os.fsdecode(file)
+        if filename.endswith("automaticDestinations-ms.json"): 
+            filelist.append(filename)
+            continue
+        elif filename.endswith("customDestinations-ms.json"):
+            os.remove(".\\output\\"+filename)
+        else:
+            continue
+    
+    for file in filelist:
+        with open("output\\"+file, encoding="utf8") as jsonfile:
+            for line in jsonfile:
+                jmp_list=["Jmp Log"]
+                
+                parsed_json = json.loads(line)
+                #print(parsed_json.keys())
+                directory_json = parsed_json["Directory"]
+                execution_time_epoch = directory_json[0]["ModifiedTime"]
+                jmp_list.append(re.sub("[^0-9]", "", execution_time_epoch))
+                EXECUTION_LIST.append(jmp_list)
+        os.remove(".\\output\\"+file)
+                
+    pass
             
 def timeline_lnkfiles():
     # command = '.\\bin\\LECmd.exe -q -d "sample\C" --json output'
