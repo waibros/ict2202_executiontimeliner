@@ -161,14 +161,29 @@ def timeline_shimcache():
         shimcache_list.append(executable_path)
         EXECUTION_LIST.append(shimcache_list)
 
+def timeline_bam():
+    command = '.\\bin\\regripper\\rip.exe -r "sample/C/Windows/System32/config/SYSTEM" -p bam_tln | findstr "exe"'
+    command_output = os.popen(command).read().split('\n')[:-1]
+
+    for line in command_output:
+        bam_list = ["BAM"]
+        epoch_time = line.split('|')[0]
+        executable_path = line.split('|')[4]
+
+        bam_list.append(int(epoch_time))
+        bam_list.append(executable_path)
+
+        EXECUTION_LIST.append(bam_list)
+
 def main():
 
     # timeline_prefetch()
-    timeline_amcache()
-    timeline_userassist()
+    # timeline_amcache()
+    # timeline_userassist()
     # timeline_shimcache()
     # timeline_eventlog()
-    timeline_lnkfiles()
+    # timeline_lnkfiles()
+    # timeline_bam()
     # Reference: https://www.geeksforgeeks.org/python-sort-list-according-second-element-sublist/
     # Sort the nested list EXECUTION_LIST by second element. 
     sorted_execution_list = sorted(EXECUTION_LIST, key = lambda x: x[1])
