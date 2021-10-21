@@ -1,4 +1,4 @@
-import os, json, datetime, io, re
+import os, json, datetime, io, re, time
 from glob import glob
 
 EXECUTION_LIST = []
@@ -61,6 +61,40 @@ def timeline_eventlog():
             evtx_list.append(message)
 
             EXECUTION_LIST.append(evtx_list)
+
+def timeline_srum():
+    filersrc=""
+    # command = '.\\bin\\SrumECmd.exe -d "sample\C" --csv output'
+    # os.system(command)
+    outputdirectory = os.fsencode(".\\output")
+    for file in os.listdir(outputdirectory):
+        filename=os.fsdecode(file)
+        if filename.endswith("AppResourceUseInfo_Output.csv"):
+            filersrc=filename
+            continue
+        elif filename.endswith(".csv") and not filename.endswith("AppResourceUseInfo_Output.csv"):
+            os.remove(".\\output\\"+filename)
+        else:
+            continue
+            
+    with open(".\\output\\"+filersrc, newline='', encoding='utf8') as csvfile:
+        srumreader = csv.DictReader(csvfile, delimiter=',')
+        #print(srumreader.fieldnames)
+        pattern = '%Y-%m-%d %H:%M:%S'
+        srum_list =[]
+        for row in srumreader:
+            srum_entry_time_epoch = int(time.mktime(time.strptime(row["Timestamp"], pattern)))
+            srum_executable = row["ExeInfo"]
+            srum_list.append(srum_entry_time_epoch)
+            srum_list.append(srum_executable)
+            EXECUTION_LIST.append(srum_list)
+    
+    #os.remove(".\\output\\"+filersrc)
+            
+        
+    
+    
+    pass
                 
 def timeline_jumplist():
     filelist=[]
