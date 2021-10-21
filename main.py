@@ -26,7 +26,26 @@ def timeline_amcache():
     pass
 
 def timeline_userassist():
-    pass
+    # A list to store all users' NTUSER.DAT (in case of shared computer)
+    ntuser_list = []
+    for root, dirs, files in os.walk("sample/C/Users"):
+        if 'NTUSER.DAT' in files and 'Default' not in root:
+            print(root, "NTUSER.DAT")
+            ntuser_list.append(os.path.join(root, "NTUSER.DAT"))
+
+    for file in ntuser_list:
+        command = '.\\bin\\regripper\\rip.exe -r ' + file + ' -p userassist_tln | findstr /C:"exe" /C:"lnk"'
+        command_output = os.popen(command).read().split('\n')[:-1]
+        for lines in command_output:
+            for line in lines.split('\n'):
+                userassist_list = ["Userassist"]
+                epoch_time = line.split('|')[0]
+                # Further slice the 4th field of command output with '-' character to extract only the Executable path
+                executable_path = ''.join(line.split('|')[4].split('-')[1:])
+                userassist_list.append(int(epoch_time))
+                userassist_list.append(executable_path)
+
+                EXECUTION_LIST.append(userassist_list)
 
 def timeline_eventlog():
     # command = '.\\bin\\EvtxECmd\\EvtxECmd.exe -f "sample\C\Windows\System32\winevt\logs\Security.evtx" --inc 4688 --json output --jsonf evtx.json'
@@ -176,10 +195,10 @@ def timeline_bam():
         EXECUTION_LIST.append(bam_list)
 
 def main():
-
+    
     # timeline_prefetch()
     # timeline_amcache()
-    # timeline_userassist()
+    timeline_userassist()
     # timeline_shimcache()
     # timeline_eventlog()
     # timeline_lnkfiles()
