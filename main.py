@@ -89,7 +89,7 @@ def timeline_srum():
             srum_list.append(srum_executable)
             EXECUTION_LIST.append(srum_list)
     
-    #os.remove(".\\output\\"+filersrc)
+    os.remove(".\\output\\"+filersrc)
             
         
     
