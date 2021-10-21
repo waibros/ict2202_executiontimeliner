@@ -29,9 +29,10 @@ def timeline_userassist():
     # A list to store all users' NTUSER.DAT (in case of shared computer)
     ntuser_list = []
     for root, dirs, files in os.walk("sample/C/Users"):
-        if 'NTUSER.DAT' in files and 'Default' not in root:
-            print(root, "NTUSER.DAT")
-            ntuser_list.append(os.path.join(root, "NTUSER.DAT"))
+        # Reference: https://newbedev.com/python-os-walk-to-certain-level 
+        if root[len("sample/C/Users"):].count(os.sep) < 2:
+            if 'NTUSER.DAT' in files and 'Default' not in root:
+                ntuser_list.append(os.path.join(root, "NTUSER.DAT"))
 
     for file in ntuser_list:
         command = '.\\bin\\regripper\\rip.exe -r ' + file + ' -p userassist_tln | findstr /C:"exe" /C:"lnk"'
@@ -229,7 +230,7 @@ def timeline_bam():
         EXECUTION_LIST.append(bam_list)
 
 def main():
-    
+
     # timeline_prefetch()
     # timeline_amcache()
     timeline_userassist()
