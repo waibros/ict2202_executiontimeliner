@@ -117,34 +117,41 @@ def timeline_srum():
     pass
                 
 def timeline_jumplist():
-    filelist=[]
+    macroext=[".docm",".dotm",".xlm",".xlsm",".xltm",".xla",".xlam",".pptm",".ppsm",".sldm",".docx"]
     # command = '.\\bin\\JLECmd.exe -q -d "sample\C" --json output'
     # os.system(command)
     outputdirectory = os.fsencode(".\\output")
     for file in os.listdir(outputdirectory):
         filename = os.fsdecode(file)
         if filename.endswith("automaticDestinations-ms.json"): 
-            filelist.append(filename)
+            with open("output\\"+filename, encoding="utf8") as jsonfile:
+                for line in jsonfile:
+                    jmp_list=["Jmp Log"]
+                    for ext in macroext:
+                        if ext in line:
+                            delete = 0
+                        else:
+                            delete = 1
+            if delete == 1:
+                os.remove(".\\output\\"+filename)
+                continue
+            elif delete == 0:
+                parsed_json = json.loads(line)
+                for i in range(len(parsed_json["DestListEntries"])):
+                    recentdoc = parsed_json["DestListEntries"][i]["Path"]
+                    execution_time_epoch = parsed_json["DestListEntries"][i]["LastModified"]
+                    for ext in macroext:
+                        if recentdoc.endswith(ext):
+                            jmp_list.append(recentdoc)
+                            jmp_list.append(re.sub("[^0-9]", "", execution_time_epoch))
+                EXECUTION_LIST.append(jmp_list) 
+            #os.remove(".\\output\\"+filename)    
             continue
         elif filename.endswith("customDestinations-ms.json"):
             os.remove(".\\output\\"+filename)
         else:
             continue
     
-    for file in filelist:
-        with open("output\\"+file, encoding="utf8") as jsonfile:
-            for line in jsonfile:
-                jmp_list=["Jmp Log"]
-                
-                parsed_json = json.loads(line)
-                #print(parsed_json.keys())
-                directory_json = parsed_json["Directory"]
-                execution_time_epoch = directory_json[0]["ModifiedTime"]
-                jmp_list.append(re.sub("[^0-9]", "", execution_time_epoch))
-                EXECUTION_LIST.append(jmp_list)
-        os.remove(".\\output\\"+file)
-                
-    pass
             
 def timeline_lnkfiles():
     # command = '.\\bin\\LECmd.exe -q -d "sample\C" --json output'
