@@ -1,5 +1,4 @@
-import os, json, datetime, io, re, csv, sys
-from posixpath import dirname
+import os, json, datetime, io, re, time, csv
 from glob import glob
 
 EXECUTION_LIST = []
@@ -82,11 +81,31 @@ def timeline_amcache():
     pass
 
 def timeline_userassist():
-    pass
+    # A list to store all users' NTUSER.DAT (in case of shared computer)
+    ntuser_list = []
+    for root, dirs, files in os.walk("sample/C/Users"):
+        # Reference: https://newbedev.com/python-os-walk-to-certain-level 
+        if root[len("sample/C/Users"):].count(os.sep) < 2:
+            if 'NTUSER.DAT' in files and 'Default' not in root:
+                ntuser_list.append(os.path.join(root, "NTUSER.DAT"))
+
+    for file in ntuser_list:
+        command = '.\\bin\\regripper\\rip.exe -r ' + file + ' -p userassist_tln | findstr /C:"exe" /C:"lnk"'
+        command_output = os.popen(command).read().split('\n')[:-1]
+        for lines in command_output:
+            for line in lines.split('\n'):
+                userassist_list = ["Userassist"]
+                epoch_time = line.split('|')[0]
+                # Further slice the 4th field of command output with '-' character to extract only the Executable path
+                executable_path = ''.join(line.split('|')[4].split('-')[1:])
+                userassist_list.append(int(epoch_time))
+                userassist_list.append(executable_path)
+
+                EXECUTION_LIST.append(userassist_list)
 
 def timeline_eventlog():
-    # command = '.\\bin\\EvtxECmd\\EvtxECmd.exe -f "sample\C\Windows\System32\winevt\logs\Security.evtx" --inc 4688 --json output --jsonf evtx.json'
-    # os.system(command)
+    command = '.\\bin\\EvtxECmd\\EvtxECmd.exe -f "sample\C\Windows\System32\winevt\logs\Security.evtx" --inc 4688 --json output --jsonf evtx.json'
+    os.system(command)
     first_line_flag = 1
     with open("output\\evtx.json") as jsonfile:
         for line in jsonfile:
@@ -117,36 +136,90 @@ def timeline_eventlog():
             evtx_list.append(message)
 
             EXECUTION_LIST.append(evtx_list)
-                
+    
+    os.remove(".\\output\\evtx.json")
+
+def timeline_srum():
+    filersrc=""
+
+    command = '.\\bin\\SrumECmd.exe -d "sample\C" --csv output'
+    os.system(command)
+
+    outputdirectory = os.fsencode(".\\output")
+    for file in os.listdir(outputdirectory):
+        filename=os.fsdecode(file)
+        if filename.endswith("AppResourceUseInfo_Output.csv"):
+            filersrc=filename
+            continue
+        elif filename.endswith(".csv") and not filename.endswith("AppResourceUseInfo_Output.csv"):
+            os.remove(".\\output\\"+filename)
+        else:
+            continue
+            
+    with open(".\\output\\"+filersrc, newline='', encoding='utf8') as csvfile:
+        
+        pattern = '%Y-%m-%d %H:%M:%S'
+        srum_dict = {}
+        srum_list = []
+        srum_reader = csv.DictReader(csvfile, delimiter=',')
+        sorted_reader = sorted(srum_reader, key=lambda d: int(d['AppId']))
+
+        for row in sorted_reader:
+            if row['ExeInfo'].endswith("exe"):
+                if row['AppId'] in srum_dict:
+                    # If the AppId appears again, increment RunCount.
+                    srum_dict[row['AppId']][2] += 1
+                else:
+                    # Initialize dictionary key-pair of AppId: Timestamp, ExecutablePath, RunCount
+                    # First occurence of the executable is captured as first run is more valuable than last run.
+                    epoch_time = int(time.mktime(time.strptime(row["Timestamp"], pattern)))
+                    srum_dict[row['AppId']] = [epoch_time, row['ExeInfo'], 1]
+    
+        for key, value in srum_dict.items():
+            srum_list = ["Srum"]
+            message = value[1] + " (" + str(value[2]) + ")"
+            srum_list.append(value[0])
+            srum_list.append(message)
+            EXECUTION_LIST.append(srum_list)
+
+    os.remove(".\\output\\"+filersrc)
+            
 def timeline_jumplist():
-    filelist=[]
+    macroext=[".docm",".dotm",".xlm",".xlsm",".xltm",".xla",".xlam",".pptm",".ppsm",".sldm",".docx"]
     # command = '.\\bin\\JLECmd.exe -q -d "sample\C" --json output'
     # os.system(command)
     outputdirectory = os.fsencode(".\\output")
     for file in os.listdir(outputdirectory):
         filename = os.fsdecode(file)
         if filename.endswith("automaticDestinations-ms.json"): 
-            filelist.append(filename)
+            with open("output\\"+filename, encoding="utf8") as jsonfile:
+                for line in jsonfile:
+                    jmp_list=["Jmp Log"]
+                    for ext in macroext:
+                        if ext in line:
+                            delete = 0
+                        else:
+                            delete = 1
+            if delete == 1:
+                os.remove(".\\output\\"+filename)
+                continue
+            elif delete == 0:
+                parsed_json = json.loads(line)
+                for i in range(len(parsed_json["DestListEntries"])):
+                    recentdoc = parsed_json["DestListEntries"][i]["Path"]
+                    execution_time_epoch = parsed_json["DestListEntries"][i]["LastModified"]
+                    for ext in macroext:
+                        if recentdoc.endswith(ext):
+                            jmp_list.append(recentdoc)
+                            jmp_list.append(re.sub("[^0-9]", "", execution_time_epoch))
+                EXECUTION_LIST.append(jmp_list) 
+            #os.remove(".\\output\\"+filename)    
             continue
         elif filename.endswith("customDestinations-ms.json"):
             os.remove(".\\output\\"+filename)
         else:
             continue
     
-    for file in filelist:
-        with open("output\\"+file, encoding="utf8") as jsonfile:
-            for line in jsonfile:
-                jmp_list=["Jmp Log"]
-                
-                parsed_json = json.loads(line)
-                #print(parsed_json.keys())
-                directory_json = parsed_json["Directory"]
-                execution_time_epoch = directory_json[0]["ModifiedTime"]
-                jmp_list.append(re.sub("[^0-9]", "", execution_time_epoch))
-                EXECUTION_LIST.append(jmp_list)
-        os.remove(".\\output\\"+file)
-                
-    pass
             
 def timeline_lnkfiles():
     # command = '.\\bin\\LECmd.exe -q -d "sample\C" --json output'
@@ -217,14 +290,31 @@ def timeline_shimcache():
         shimcache_list.append(executable_path)
         EXECUTION_LIST.append(shimcache_list)
 
+def timeline_bam():
+    command = '.\\bin\\regripper\\rip.exe -r "sample/C/Windows/System32/config/SYSTEM" -p bam_tln | findstr "exe"'
+    command_output = os.popen(command).read().split('\n')[:-1]
+
+    for line in command_output:
+        bam_list = ["BAM"]
+        epoch_time = line.split('|')[0]
+        executable_path = line.split('|')[4]
+
+        bam_list.append(int(epoch_time))
+        bam_list.append(executable_path)
+
+        EXECUTION_LIST.append(bam_list)
+
 def main():
 
     # timeline_prefetch()
-    timeline_amcache()
+    # timeline_amcache()
     # timeline_userassist()
     # timeline_shimcache()
     # timeline_eventlog()
     # timeline_lnkfiles()
+    # timeline_bam()
+    # timeline_srum()
+    # timeline_jumplist()
     # Reference: https://www.geeksforgeeks.org/python-sort-list-according-second-element-sublist/
     # Sort the nested list EXECUTION_LIST by second element. 
     #sorted_execution_list = sorted(EXECUTION_LIST, key = lambda x: x[1])
