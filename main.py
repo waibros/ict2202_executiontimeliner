@@ -1,4 +1,4 @@
-import os, json, datetime, io, re, csv
+import os, json, datetime, io, re, csv, sys
 from posixpath import dirname
 from glob import glob
 
@@ -23,27 +23,62 @@ def convert_to_epoch(datetime_string):
     
     return(int(epoch_time))
 
-def convert_csv_to_json(csvSource,jsonDestination):
-    #List to store data
-    data = []
-
-    #Open the CSV file, reading each line as a dictionary
-    with open(csvSource, encoding='utf-8') as csvFile:
-        csvFileReader = csv.DictReader(csvFile)
-
-        for rows in csvFileReader:
-            data.append(rows)
-    
-    #Dump data as a json file to defined destination
-    with open(jsonDestination, 'w', encoding='utf-8') as jsonFile:
-        for i in data:
-            jsonFile.write(json.dumps(i))
-
 def timeline_amcache():
-    # command = '.\bin\AmcacheParser.exe -f ".\sample\C\Windows\AppCompat\Programs\Amcache.hve" --csv ".\output" --csvf amcache.csv'
+    # command = '.\bin\AmcacheParser.exe -f ".\sample\C\Windows\AppCompat\Programs\Amcache.hve" --csv ".\output" --csvf amcache.csv -i --dt "yyyy-MM-ddTHH:mm:ss.fff"'
     # os.system(command)
-    convert_csv_to_json(".\\output\\amcache_ShortCuts.csv", ".\\output\\ShortCuts.json")
 
+    # List to control which amcache output to parse
+    amcache_to_delete = ["DeviceContainers", "DevicePnps", "DriveBinaries", "DriverPackages", "ShortCuts", "UnassociatedFileEntries",
+                        "AssociatedFileEntries", "ProgramEntries"]
+    amcache_files = ["UnassociatedFileEntries", "AssociatedFileEntries", "ProgramEntries"]
+    
+    source_directory = os.path.dirname(os.path.realpath(__file__))
+
+    for name in amcache_files:
+        print("Parsing " + name)
+        data_name = "Amcache (" + name + ")"
+        target = source_directory + "\\output\\amcache_" + name + ".csv"
+        data = []
+
+        #Open the CSV file, reading each line as a dictionary
+        with open(target, encoding='utf-8') as csvFile:
+            csvFileReader = csv.DictReader(csvFile)
+
+            #Set different headers for different csv file content type
+            full_path = "FullPath"
+            product_name = "ProductName"
+            key_lastwrite = "FileKeyLastWriteTimestamp"
+            if name == "ProgramEntries":
+                full_path = "RootDirPath"
+                product_name = "Name"
+                key_lastwrite = "KeyLastWriteTimestamp"
+
+            for row in csvFileReader:
+                amcache_data_list = []
+                file_timestamp = row[key_lastwrite].strip()
+                #Check if the File write time is empty
+                if not file_timestamp:
+                    #Handle empty time and set it to 0 for epoch
+                    file_timestamp = "1970-1-1T00:00:00"
+                    amcache_data_message = "Source: " + row[full_path] + " | ProductName: " + row[product_name]
+                    amcache_data_list.append(convert_to_epoch(file_timestamp))
+                    amcache_data_list.append(amcache_data_message)
+                    data.append(amcache_data_list)
+                else:
+                    amcache_data_message = "Source: " + row[full_path] + " | ProductName: " + row[product_name]
+                    amcache_data_list.append(data_name)
+                    amcache_data_list.append(convert_to_epoch(file_timestamp))
+                    amcache_data_list.append(amcache_data_message)
+                    data.append(amcache_data_list)
+
+        #After processing for a file, push the data into execution_list
+        print(data)
+        EXECUTION_LIST.append(data)
+
+    #Delete csv files
+    for filename in amcache_to_delete:
+        target = source_directory + "\\output\\amcache_" + filename + ".csv"
+        os.remove(target)
     pass
 
 def timeline_userassist():
@@ -186,7 +221,7 @@ def main():
 
     # timeline_prefetch()
     timeline_amcache()
-    timeline_userassist()
+    # timeline_userassist()
     # timeline_shimcache()
     # timeline_eventlog()
     # timeline_lnkfiles()
