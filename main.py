@@ -1,4 +1,4 @@
-import os, json, datetime, io, re, time
+import os, json, datetime, io, re, time, csv
 from glob import glob
 
 EXECUTION_LIST = []
@@ -49,8 +49,8 @@ def timeline_userassist():
                 EXECUTION_LIST.append(userassist_list)
 
 def timeline_eventlog():
-    # command = '.\\bin\\EvtxECmd\\EvtxECmd.exe -f "sample\C\Windows\System32\winevt\logs\Security.evtx" --inc 4688 --json output --jsonf evtx.json'
-    # os.system(command)
+    command = '.\\bin\\EvtxECmd\\EvtxECmd.exe -f "sample\C\Windows\System32\winevt\logs\Security.evtx" --inc 4688 --json output --jsonf evtx.json'
+    os.system(command)
     first_line_flag = 1
     with open("output\\evtx.json") as jsonfile:
         for line in jsonfile:
@@ -81,11 +81,15 @@ def timeline_eventlog():
             evtx_list.append(message)
 
             EXECUTION_LIST.append(evtx_list)
+    
+    os.remove(".\\output\\evtx.json")
 
 def timeline_srum():
     filersrc=""
-    # command = '.\\bin\\SrumECmd.exe -d "sample\C" --csv output'
-    # os.system(command)
+
+    command = '.\\bin\\SrumECmd.exe -d "sample\C" --csv output'
+    os.system(command)
+
     outputdirectory = os.fsencode(".\\output")
     for file in os.listdir(outputdirectory):
         filename=os.fsdecode(file)
@@ -98,24 +102,33 @@ def timeline_srum():
             continue
             
     with open(".\\output\\"+filersrc, newline='', encoding='utf8') as csvfile:
-        srumreader = csv.DictReader(csvfile, delimiter=',')
-        #print(srumreader.fieldnames)
+        
         pattern = '%Y-%m-%d %H:%M:%S'
-        srum_list =[]
-        for row in srumreader:
-            srum_entry_time_epoch = int(time.mktime(time.strptime(row["Timestamp"], pattern)))
-            srum_executable = row["ExeInfo"]
-            srum_list.append(srum_entry_time_epoch)
-            srum_list.append(srum_executable)
-            EXECUTION_LIST.append(srum_list)
+        srum_dict = {}
+        srum_list = []
+        srum_reader = csv.DictReader(csvfile, delimiter=',')
+        sorted_reader = sorted(srum_reader, key=lambda d: int(d['AppId']))
+
+        for row in sorted_reader:
+            if row['ExeInfo'].endswith("exe"):
+                if row['AppId'] in srum_dict:
+                    # If the AppId appears again, increment RunCount.
+                    srum_dict[row['AppId']][2] += 1
+                else:
+                    # Initialize dictionary key-pair of AppId: Timestamp, ExecutablePath, RunCount
+                    # First occurence of the executable is captured as first run is more valuable than last run.
+                    epoch_time = int(time.mktime(time.strptime(row["Timestamp"], pattern)))
+                    srum_dict[row['AppId']] = [epoch_time, row['ExeInfo'], 1]
     
+        for key, value in srum_dict.items():
+            srum_list = ["Srum"]
+            message = value[1] + " (" + str(value[2]) + ")"
+            srum_list.append(value[0])
+            srum_list.append(message)
+            EXECUTION_LIST.append(srum_list)
+
     os.remove(".\\output\\"+filersrc)
             
-        
-    
-    
-    pass
-                
 def timeline_jumplist():
     macroext=[".docm",".dotm",".xlm",".xlsm",".xltm",".xla",".xlam",".pptm",".ppsm",".sldm",".docx"]
     # command = '.\\bin\\JLECmd.exe -q -d "sample\C" --json output'
@@ -240,11 +253,13 @@ def main():
 
     # timeline_prefetch()
     # timeline_amcache()
-    timeline_userassist()
+    # timeline_userassist()
     # timeline_shimcache()
     # timeline_eventlog()
     # timeline_lnkfiles()
     # timeline_bam()
+    # timeline_srum()
+    # timeline_jumplist()
     # Reference: https://www.geeksforgeeks.org/python-sort-list-according-second-element-sublist/
     # Sort the nested list EXECUTION_LIST by second element. 
     sorted_execution_list = sorted(EXECUTION_LIST, key = lambda x: x[1])
