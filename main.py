@@ -1,4 +1,4 @@
-import os, json, datetime, io, re, time, csv, sys
+import os, json, datetime, re, time, csv, sys
 from glob import glob
 
 EXECUTION_LIST = []
@@ -7,7 +7,7 @@ TARGET_PATH = ""
 def convert_to_epoch(datetime_string):
     # Defining the timestamp pattern to parse into Epoch. 
     ts_pattern = "%Y-%m-%dT%H:%M:%S.%f"
-
+    
     # Reference: https://stackoverflow.com/questions/55586325/python-parse-timestamp-string-with-7-digits-for-microseconds-to-datetime 
     # Datetime cannot parse milliseconds more than 6 characters. 
     # Output a datetime object tuple.
@@ -20,7 +20,6 @@ def convert_to_epoch(datetime_string):
                                     datetime_tuple.tm_hour,
                                     datetime_tuple.tm_min,
                                     datetime_tuple.tm_sec).timestamp()
-    
     return(int(epoch_time))
 
 def timeline_amcache():
@@ -102,7 +101,7 @@ def timeline_userassist():
                 epoch_time = line.split('|')[0]
                 # Further slice the 4th field of command output with '-' character to extract only the Executable path
                 executable_path = ''.join(line.split('|')[4].split('-')[1:])
-                userassist_list.append(int(epoch_time))
+                userassist_list.append(int(epoch_time) - int(-time.timezone))
                 userassist_list.append(executable_path)
 
                 EXECUTION_LIST.append(userassist_list)
@@ -210,7 +209,7 @@ def timeline_jumplist():
                             for i in range(len(parsed_json["DestListEntries"])):
                                 recentdoc = parsed_json["DestListEntries"][i]["Path"]
                                 # Extracts only first 10 digits of the epoch time as the last 3 digits are milliseconds. 
-                                execution_time_epoch = int(re.sub("[^0-9]", "", parsed_json["DestListEntries"][i]["LastModified"])[:10])
+                                execution_time_epoch = int(re.sub("[^0-9]", "", parsed_json["DestListEntries"][i]["LastModified"])[:10]) - int(-time.timezone)
                                 for ext in macroext:
                                     if recentdoc.endswith(ext):
                                         jmp_list=["Jmp Log"]
