@@ -320,34 +320,34 @@ def main():
     global TARGET_PATH 
     TARGET_PATH = path
 
-    # print("Processing Prefetch...")
-    # timeline_prefetch()
-    # print("Prefetch processing completed! (1/9)")
+    print("Processing Prefetch...")
+    timeline_prefetch()
+    print("Prefetch processing completed! (1/9)")
 
-    # print("Processing Amcache...")
-    # timeline_amcache()
-    # print("Amcache processing completed! (2/9)")
+    print("Processing Amcache...")
+    timeline_amcache()
+    print("Amcache processing completed! (2/9)")
 
-    # timeline_userassist()
-    # print("Amcache processing completed! (3/9)")
+    timeline_userassist()
+    print("Amcache processing completed! (3/9)")
 
-    # timeline_shimcache()
-    # print("ShimCache processing completed! (4/9)")
+    timeline_shimcache()
+    print("ShimCache processing completed! (4/9)")
 
-    # print("Processing Event Log...")
-    # timeline_eventlog()
-    # print("Event Log processing completed! (5/9)")
+    print("Processing Event Log...")
+    timeline_eventlog()
+    print("Event Log processing completed! (5/9)")
 
-    # print("Processing LNK files...")
-    # timeline_lnkfiles()
-    # print("LNK processing completed! (6/9)")
+    print("Processing LNK files...")
+    timeline_lnkfiles()
+    print("LNK processing completed! (6/9)")
 
-    # timeline_bam()
-    # print("BAM processing completed! (7/9)")
+    timeline_bam()
+    print("BAM processing completed! (7/9)")
 
-    # print("Processing SRUM...")
-    # timeline_srum()
-    # print("SRUM processing completed! (8/9)")
+    print("Processing SRUM...")
+    timeline_srum()
+    print("SRUM processing completed! (8/9)")
 
     print("Processing Jump lists...")
     timeline_jumplist()
@@ -357,15 +357,24 @@ def main():
     # Reference: https://www.geeksforgeeks.org/python-sort-list-according-second-element-sublist/
     # Sort the nested list EXECUTION_LIST by second element. 
     sorted_execution_list = sorted(EXECUTION_LIST, key = lambda x: x[1])
-
     print("Execution timelined!")
-    for item in sorted_execution_list:
-        # Reference: https://www.javatpoint.com/python-epoch-to-datetime 
-        converted_datetime = datetime.datetime.fromtimestamp(item[1])
-        execution_source = item[0]
-        execution_sourcepath = item[2]
-        print(converted_datetime, execution_source, execution_sourcepath)
-        # TO-DO: Save the list into CSV. 
+
+    file_name = datetime.datetime.now().strftime("%Y-%m-%dT%H%M%S") + "_output.csv"
+
+    with open('output\\' + file_name, 'w', newline='') as csvfile:
+        fieldnames = ['timestamp', 'source', 'data']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+        writer.writeheader()
+        for item in sorted_execution_list:
+            # Reference: https://www.javatpoint.com/python-epoch-to-datetime 
+            converted_datetime = datetime.datetime.fromtimestamp(item[1])
+            execution_source = item[0]
+            execution_data = item[2]
+            writer.writerow({'timestamp': converted_datetime,
+                            'source': execution_source,
+                            'data': execution_data})
+        
 
 if __name__ == "__main__":
     main()
