@@ -1,7 +1,8 @@
-import os, json, datetime, io, re, time, csv
+import os, json, datetime, io, re, time, csv, sys
 from glob import glob
 
 EXECUTION_LIST = []
+TARGET_PATH = ""
 
 def convert_to_epoch(datetime_string):
     # Defining the timestamp pattern to parse into Epoch. 
@@ -23,8 +24,9 @@ def convert_to_epoch(datetime_string):
     return(int(epoch_time))
 
 def timeline_amcache():
-    # command = '.\bin\AmcacheParser.exe -f ".\sample\C\Windows\AppCompat\Programs\Amcache.hve" --csv ".\output" --csvf amcache.csv -i --dt "yyyy-MM-ddTHH:mm:ss.fff"'
-    # os.system(command)
+    path = TARGET_PATH + r"\Windows\AppCompat\Programs\Amcache.hve"
+    command = '.\\bin\\AmcacheParser.exe -f ' + path + ' --csv ".\output" --csvf amcache.csv -i --dt "yyyy-MM-ddTHH:mm:ss.fff"'
+    os.system(command)
 
     # List to control which amcache output to parse
     amcache_to_delete = ["DeviceContainers", "DevicePnps", "DriveBinaries", "DriverPackages", "ShortCuts", "UnassociatedFileEntries",
@@ -62,17 +64,19 @@ def timeline_amcache():
                     amcache_data_message = "Source: " + row[full_path] + " | ProductName: " + row[product_name]
                     amcache_data_list.append(convert_to_epoch(file_timestamp))
                     amcache_data_list.append(amcache_data_message)
-                    data.append(amcache_data_list)
+                    EXECUTION_LIST.append(amcache_data_list)
+                    # data.append(amcache_data_list)
                 else:
                     amcache_data_message = "Source: " + row[full_path] + " | ProductName: " + row[product_name]
                     amcache_data_list.append(data_name)
-                    amcache_data_list.append(convert_to_epoch(file_timestamp))
+                    amcache_data_list.append(int(convert_to_epoch(file_timestamp)))
                     amcache_data_list.append(amcache_data_message)
-                    data.append(amcache_data_list)
+                    EXECUTION_LIST.append(amcache_data_list)
+                    # data.append(amcache_data_list)
 
         #After processing for a file, push the data into execution_list
-        print(data)
-        EXECUTION_LIST.append(data)
+        # print(data)
+        # EXECUTION_LIST.append(data)
 
     #Delete csv files
     for filename in amcache_to_delete:
@@ -81,11 +85,12 @@ def timeline_amcache():
     pass
 
 def timeline_userassist():
+    path = TARGET_PATH + r"\Users"
     # A list to store all users' NTUSER.DAT (in case of shared computer)
     ntuser_list = []
-    for root, dirs, files in os.walk("sample/C/Users"):
+    for root, dirs, files in os.walk(path):
         # Reference: https://newbedev.com/python-os-walk-to-certain-level 
-        if root[len("sample/C/Users"):].count(os.sep) < 2:
+        if root[len(path):].count(os.sep) < 2:
             if 'NTUSER.DAT' in files and 'Default' not in root:
                 ntuser_list.append(os.path.join(root, "NTUSER.DAT"))
 
@@ -104,7 +109,8 @@ def timeline_userassist():
                 EXECUTION_LIST.append(userassist_list)
 
 def timeline_eventlog():
-    command = '.\\bin\\EvtxECmd\\EvtxECmd.exe -f "sample\C\Windows\System32\winevt\logs\Security.evtx" --inc 4688 --json output --jsonf evtx.json'
+    path = TARGET_PATH + r"\Windows\System32\winevt\logs\Security.evtx"
+    command = '.\\bin\\EvtxECmd\\EvtxECmd.exe -f ' + path + ' --inc 4688 --json output --jsonf evtx.json'
     os.system(command)
     first_line_flag = 1
     with open("output\\evtx.json") as jsonfile:
@@ -140,9 +146,10 @@ def timeline_eventlog():
     os.remove(".\\output\\evtx.json")
 
 def timeline_srum():
+    path = TARGET_PATH
     filersrc=""
 
-    command = '.\\bin\\SrumECmd.exe -d "sample\C" --csv output'
+    command = '.\\bin\\SrumECmd.exe -d ' + path +' --csv output'
     os.system(command)
 
     outputdirectory = os.fsencode(".\\output")
@@ -221,15 +228,16 @@ def timeline_jumplist():
             os.remove(".\\output\\"+filename)
         else:
             continue
-    
-            
+          
 def timeline_lnkfiles():
-    # command = '.\\bin\\LECmd.exe -q -d "sample\C" --json output'
-    # os.system(command)
-    # f = glob(os.path.join(".\\output","*_LECMD_Output.json"))[0]
-    # if os.path.isfile('.\\output\\lnktmp.json'):
-    #     os.remove(".\\output\\lnktmp.json")
-    # os.rename(f, os.path.join(".\\output","lnktmp.json"))
+
+    command = '.\\bin\\LECmd.exe -q -d '+ TARGET_PATH +' --json output'
+    os.system(command)
+    f = glob(os.path.join(".\\output","*_LECMD_Output.json"))[0]
+    if os.path.isfile('.\\output\\lnktmp.json'):
+        os.remove(".\\output\\lnktmp.json")
+    os.rename(f, os.path.join(".\\output","lnktmp.json"))
+
     with open("output\\lnktmp.json") as jsonfile:
         for line in jsonfile:
             lnk_list = ["Lnk Log"]
@@ -244,11 +252,13 @@ def timeline_lnkfiles():
                 lnk_list.append(execution_time_epoch)
                 lnk_list.append(executable_path)
                 EXECUTION_LIST.append(lnk_list)
-
+    os.remove(".\\output\\lnktmp.json")
 
 def timeline_prefetch():
-    # command = '.\\bin\\PECmd.exe -q -d "sample\C\Windows\prefetch" --json output --jsonf temp.json'
-    # os.system(command)
+    path = TARGET_PATH + r"\Windows\prefetch"
+    command = '.\\bin\\PECmd.exe -q -d ' + path + ' --json output --jsonf temp.json'
+    os.system(command)
+
     with open("output\\temp.json", encoding="utf8") as jsonfile:
         for line in jsonfile:
             
@@ -275,8 +285,11 @@ def timeline_prefetch():
             EXECUTION_LIST.append(first_run_list)
             EXECUTION_LIST.append(last_run_list)
 
+    os.remove("output\\temp.json")
+
 def timeline_shimcache():
-    command = '.\\bin\\regripper\\rip.exe -r "sample/C/Windows/System32/config/SYSTEM" -p appcompatcache_tln'
+    path = TARGET_PATH + r"\Windows\System32\config\SYSTEM"
+    command = '.\\bin\\regripper\\rip.exe -r ' + path + ' -p appcompatcache_tln'
     # Read from 7th line onwards as the first 7 lines are plugin information
     # Last line is ommited as it is a blank line
     command_output = os.popen(command).read().split('\n')[7:-1]
@@ -293,7 +306,8 @@ def timeline_shimcache():
         EXECUTION_LIST.append(shimcache_list)
 
 def timeline_bam():
-    command = '.\\bin\\regripper\\rip.exe -r "sample/C/Windows/System32/config/SYSTEM" -p bam_tln | findstr "exe"'
+    path = TARGET_PATH + r"\Windows\System32\config\SYSTEM"
+    command = '.\\bin\\regripper\\rip.exe -r ' + path + ' -p bam_tln | findstr "exe"'
     command_output = os.popen(command).read().split('\n')[:-1]
 
     for line in command_output:
@@ -308,8 +322,16 @@ def timeline_bam():
 
 def main():
 
+    if len(sys.argv) != 2:
+        print('Usage: python main.py <folder to kape output>\ne.g. python main.py C:\\Users\\Bob\\kape_output\\c')
+        return
+
+    path = sys.argv[1]
+    global TARGET_PATH 
+    TARGET_PATH = path
+
     # timeline_prefetch()
-    # timeline_amcache()
+    timeline_amcache()
     # timeline_userassist()
     # timeline_shimcache()
     # timeline_eventlog()
@@ -320,14 +342,14 @@ def main():
     timeline_jumplist()
     # Reference: https://www.geeksforgeeks.org/python-sort-list-according-second-element-sublist/
     # Sort the nested list EXECUTION_LIST by second element. 
-    #sorted_execution_list = sorted(EXECUTION_LIST, key = lambda x: x[1])
+    sorted_execution_list = sorted(EXECUTION_LIST, key = lambda x: x[1])
 
-    #for item in sorted_execution_list:
+    for item in sorted_execution_list:
         # Reference: https://www.javatpoint.com/python-epoch-to-datetime 
-    #    converted_datetime = datetime.datetime.fromtimestamp(item[1])
-    #    execution_source = item[0]
-    #    execution_sourcepath = item[2]
-    #    print(converted_datetime, execution_source, execution_sourcepath)
+        converted_datetime = datetime.datetime.fromtimestamp(item[1])
+        execution_source = item[0]
+        execution_sourcepath = item[2]
+        print(converted_datetime, execution_source, execution_sourcepath)
         # TO-DO: Save the list into CSV. 
 
 if __name__ == "__main__":
