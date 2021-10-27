@@ -25,7 +25,7 @@ def convert_to_epoch(datetime_string):
 
 def timeline_amcache():
     path = TARGET_PATH + r"\Windows\AppCompat\Programs\Amcache.hve"
-    command = '.\\bin\\AmcacheParser.exe -f ' + path + ' --csv ".\output" --csvf amcache.csv -i --dt "yyyy-MM-ddTHH:mm:ss.fff"'
+    command = '.\\bin\\AmcacheParser.exe -f ' + path + ' --csv ".\output" --csvf amcache.csv -i --dt "yyyy-MM-ddTHH:mm:ss.fff" >NUL'
     os.system(command)
 
     # List to control which amcache output to parse
@@ -82,7 +82,6 @@ def timeline_amcache():
     for filename in amcache_to_delete:
         target = source_directory + "\\output\\amcache_" + filename + ".csv"
         os.remove(target)
-    pass
 
 def timeline_userassist():
     path = TARGET_PATH + r"\Users"
@@ -110,7 +109,7 @@ def timeline_userassist():
 
 def timeline_eventlog():
     path = TARGET_PATH + r"\Windows\System32\winevt\logs\Security.evtx"
-    command = '.\\bin\\EvtxECmd\\EvtxECmd.exe -f ' + path + ' --inc 4688 --json output --jsonf evtx.json'
+    command = '.\\bin\\EvtxECmd\\EvtxECmd.exe -f ' + path + ' --inc 4688 --json output --jsonf evtx.json >NUL'
     os.system(command)
     first_line_flag = 1
     with open("output\\evtx.json") as jsonfile:
@@ -148,7 +147,7 @@ def timeline_eventlog():
 def timeline_srum():
     filersrc=""
 
-    command = '.\\bin\\SrumECmd.exe -d ' + TARGET_PATH +' --csv output'
+    command = '.\\bin\\SrumECmd.exe -d ' + TARGET_PATH +' --csv output >NUL'
     os.system(command)
 
     outputdirectory = os.fsencode(".\\output")
@@ -191,48 +190,38 @@ def timeline_srum():
     os.remove(".\\output\\"+filersrc)
             
 def timeline_jumplist():
-    macroext=[".docm",".dotm",".xlm",".xlsm",".xltm",".xla",".xlam",".pptm",".ppsm",".sldm",".docx"]
+    macroext=[".docm",".dotm",".xlm",".xlsm",".xltm",".xla",".xlam",".pptm",".ppsm",".sldm", ".docx"]
 
-    command = '.\\bin\\JLECmd.exe -q -d ' + TARGET_PATH + ' --json output'
+    command = '.\\bin\\JLECmd.exe -q -d ' + TARGET_PATH + ' --json output >NUL'
     os.system(command)
+
+    source_directory = os.path.dirname(os.path.realpath(__file__))
 
     outputdirectory = os.fsencode(".\\output")
     for file in os.listdir(outputdirectory):
         filename = os.fsdecode(file)
         if filename.endswith("automaticDestinations-ms.json"): 
             with open("output\\"+filename, encoding="utf8") as jsonfile:
+                print(filename)
                 for line in jsonfile:
-                    
                     for ext in macroext:
                         if ext in line:
-                            delete = 0
-                        else:
-                            delete = 1
-            if delete == 1:
-                os.remove(".\\output\\"+filename)
-                continue
-            elif delete == 0:
-                parsed_json = json.loads(line)
-                for i in range(len(parsed_json["DestListEntries"])):
-                    recentdoc = parsed_json["DestListEntries"][i]["Path"]
-                    # Extracts only first 10 digits of the epoch time as the last 3 digits are milliseconds. 
-                    execution_time_epoch = int(re.sub("[^0-9]", "", parsed_json["DestListEntries"][i]["LastModified"])[:10])
-                    for ext in macroext:
-                        if recentdoc.endswith(ext):
-                            jmp_list=["Jmp Log"]
-                            jmp_list.append(execution_time_epoch)
-                            jmp_list.append(recentdoc)
-                            EXECUTION_LIST.append(jmp_list) 
-            #os.remove(".\\output\\"+filename)
-            continue
-        elif filename.endswith("customDestinations-ms.json"):
-            os.remove(".\\output\\"+filename)
-        else:
-            continue
+                            parsed_json = json.loads(line)
+                            for i in range(len(parsed_json["DestListEntries"])):
+                                recentdoc = parsed_json["DestListEntries"][i]["Path"]
+                                # Extracts only first 10 digits of the epoch time as the last 3 digits are milliseconds. 
+                                execution_time_epoch = int(re.sub("[^0-9]", "", parsed_json["DestListEntries"][i]["LastModified"])[:10])
+                                for ext in macroext:
+                                    if recentdoc.endswith(ext):
+                                        jmp_list=["Jmp Log"]
+                                        jmp_list.append(execution_time_epoch)
+                                        jmp_list.append(recentdoc)
+                                        EXECUTION_LIST.append(jmp_list)
+        os.remove("output\\"+filename)
           
 def timeline_lnkfiles():
 
-    command = '.\\bin\\LECmd.exe -q -d '+ TARGET_PATH +' --json output'
+    command = '.\\bin\\LECmd.exe -q -d '+ TARGET_PATH +' --json output >NUL'
     os.system(command)
 
     f = glob(os.path.join(".\\output","*_LECMD_Output.json"))[0]
@@ -258,7 +247,7 @@ def timeline_lnkfiles():
 
 def timeline_prefetch():
     path = TARGET_PATH + r"\Windows\prefetch"
-    command = '.\\bin\\PECmd.exe -q -d ' + path + ' --json output --jsonf temp.json'
+    command = '.\\bin\\PECmd.exe -q -d ' + path + ' --json output --jsonf temp.json >NUL'
     os.system(command)
 
     with open("output\\temp.json", encoding="utf8") as jsonfile:
@@ -323,7 +312,6 @@ def timeline_bam():
         EXECUTION_LIST.append(bam_list)
 
 def main():
-
     if len(sys.argv) != 2:
         print('Usage: python main.py <folder to kape output>\ne.g. python main.py C:\\Users\\Bob\\kape_output\\c')
         return
@@ -332,19 +320,45 @@ def main():
     global TARGET_PATH 
     TARGET_PATH = path
 
-    timeline_prefetch()
-    timeline_amcache()
-    timeline_userassist()
-    timeline_shimcache()
-    timeline_eventlog()
-    timeline_lnkfiles()
-    timeline_bam()
-    timeline_srum()
+    # print("Processing Prefetch...")
+    # timeline_prefetch()
+    # print("Prefetch processing completed! (1/9)")
+
+    # print("Processing Amcache...")
+    # timeline_amcache()
+    # print("Amcache processing completed! (2/9)")
+
+    # timeline_userassist()
+    # print("Amcache processing completed! (3/9)")
+
+    # timeline_shimcache()
+    # print("ShimCache processing completed! (4/9)")
+
+    # print("Processing Event Log...")
+    # timeline_eventlog()
+    # print("Event Log processing completed! (5/9)")
+
+    # print("Processing LNK files...")
+    # timeline_lnkfiles()
+    # print("LNK processing completed! (6/9)")
+
+    # timeline_bam()
+    # print("BAM processing completed! (7/9)")
+
+    # print("Processing SRUM...")
+    # timeline_srum()
+    # print("SRUM processing completed! (8/9)")
+
+    print("Processing Jump lists...")
     timeline_jumplist()
+    print("Jump lists processing completed! (9/9)")
+
+    print("Begin timelining...")
     # Reference: https://www.geeksforgeeks.org/python-sort-list-according-second-element-sublist/
     # Sort the nested list EXECUTION_LIST by second element. 
     sorted_execution_list = sorted(EXECUTION_LIST, key = lambda x: x[1])
 
+    print("Execution timelined!")
     for item in sorted_execution_list:
         # Reference: https://www.javatpoint.com/python-epoch-to-datetime 
         converted_datetime = datetime.datetime.fromtimestamp(item[1])
