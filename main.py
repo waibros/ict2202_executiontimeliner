@@ -146,10 +146,9 @@ def timeline_eventlog():
     os.remove(".\\output\\evtx.json")
 
 def timeline_srum():
-    path = TARGET_PATH
     filersrc=""
 
-    command = '.\\bin\\SrumECmd.exe -d ' + path +' --csv output'
+    command = '.\\bin\\SrumECmd.exe -d ' + TARGET_PATH +' --csv output'
     os.system(command)
 
     outputdirectory = os.fsencode(".\\output")
@@ -193,8 +192,10 @@ def timeline_srum():
             
 def timeline_jumplist():
     macroext=[".docm",".dotm",".xlm",".xlsm",".xltm",".xla",".xlam",".pptm",".ppsm",".sldm",".docx"]
-    # command = '.\\bin\\JLECmd.exe -q -d "sample\C" --json output'
-    # os.system(command)
+
+    command = '.\\bin\\JLECmd.exe -q -d ' + TARGET_PATH + ' --json output'
+    os.system(command)
+
     outputdirectory = os.fsencode(".\\output")
     for file in os.listdir(outputdirectory):
         filename = os.fsdecode(file)
@@ -214,15 +215,15 @@ def timeline_jumplist():
                 parsed_json = json.loads(line)
                 for i in range(len(parsed_json["DestListEntries"])):
                     recentdoc = parsed_json["DestListEntries"][i]["Path"]
-                    execution_time_epoch = parsed_json["DestListEntries"][i]["LastModified"]
+                    # Extracts only first 10 digits of the epoch time as the last 3 digits are milliseconds. 
+                    execution_time_epoch = int(re.sub("[^0-9]", "", parsed_json["DestListEntries"][i]["LastModified"])[:10])
                     for ext in macroext:
                         if recentdoc.endswith(ext):
                             jmp_list=["Jmp Log"]
+                            jmp_list.append(execution_time_epoch)
                             jmp_list.append(recentdoc)
-                            jmp_list.append(re.sub("[^0-9]", "", execution_time_epoch))
                             EXECUTION_LIST.append(jmp_list) 
             #os.remove(".\\output\\"+filename)
-            print("argh")
             continue
         elif filename.endswith("customDestinations-ms.json"):
             os.remove(".\\output\\"+filename)
@@ -233,6 +234,7 @@ def timeline_lnkfiles():
 
     command = '.\\bin\\LECmd.exe -q -d '+ TARGET_PATH +' --json output'
     os.system(command)
+
     f = glob(os.path.join(".\\output","*_LECMD_Output.json"))[0]
     if os.path.isfile('.\\output\\lnktmp.json'):
         os.remove(".\\output\\lnktmp.json")
@@ -330,15 +332,14 @@ def main():
     global TARGET_PATH 
     TARGET_PATH = path
 
-    # timeline_prefetch()
+    timeline_prefetch()
     timeline_amcache()
-    # timeline_userassist()
-    # timeline_shimcache()
-    # timeline_eventlog()
-    # timeline_lnkfiles()
-    # timeline_bam()
-    # timeline_srum()
-    print("running jumplist")
+    timeline_userassist()
+    timeline_shimcache()
+    timeline_eventlog()
+    timeline_lnkfiles()
+    timeline_bam()
+    timeline_srum()
     timeline_jumplist()
     # Reference: https://www.geeksforgeeks.org/python-sort-list-according-second-element-sublist/
     # Sort the nested list EXECUTION_LIST by second element. 
