@@ -194,7 +194,7 @@ def timeline_jumplist():
         if filename.endswith("automaticDestinations-ms.json"): 
             with open("output\\"+filename, encoding="utf8") as jsonfile:
                 for line in jsonfile:
-                    jmp_list=["Jmp Log"]
+                    
                     for ext in macroext:
                         if ext in line:
                             delete = 0
@@ -210,10 +210,12 @@ def timeline_jumplist():
                     execution_time_epoch = parsed_json["DestListEntries"][i]["LastModified"]
                     for ext in macroext:
                         if recentdoc.endswith(ext):
+                            jmp_list=["Jmp Log"]
                             jmp_list.append(recentdoc)
                             jmp_list.append(re.sub("[^0-9]", "", execution_time_epoch))
-                EXECUTION_LIST.append(jmp_list) 
-            #os.remove(".\\output\\"+filename)    
+                            EXECUTION_LIST.append(jmp_list) 
+            #os.remove(".\\output\\"+filename)
+            print("argh")
             continue
         elif filename.endswith("customDestinations-ms.json"):
             os.remove(".\\output\\"+filename)
@@ -314,7 +316,8 @@ def main():
     # timeline_lnkfiles()
     # timeline_bam()
     # timeline_srum()
-    # timeline_jumplist()
+    print("running jumplist")
+    timeline_jumplist()
     # Reference: https://www.geeksforgeeks.org/python-sort-list-according-second-element-sublist/
     # Sort the nested list EXECUTION_LIST by second element. 
     #sorted_execution_list = sorted(EXECUTION_LIST, key = lambda x: x[1])
