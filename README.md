@@ -1,6 +1,6 @@
 # Execution Timeliner
 
-:tw-1f31f: A tool created for SIT ICT2202 project - Designing and developing a solution for an existing problem in Digital Forensics. :tw-1f31f:
+:star: A tool created for SIT ICT2202 project - Designing and developing a solution for an existing problem in Digital Forensics. :star:
 
 The tool tackles the issue on manual processing and analysis of individual artifacts (e.g. Prefetch, Amcache etc) by timelining every execution artifacts using readily available parsers. 
 
