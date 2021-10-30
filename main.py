@@ -216,7 +216,6 @@ def timeline_jumplist(TARGET_PATH,timeline_queue):
         filename = os.fsdecode(file)
         if filename.endswith("automaticDestinations-ms.json"): 
             with open("output\\"+filename, encoding="utf8") as jsonfile:
-                #print(filename)
                 for line in jsonfile:
                     for ext in macroext:
                         if ext in line:
