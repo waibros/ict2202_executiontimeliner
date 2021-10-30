@@ -1,9 +1,7 @@
 import os, json, datetime, re, time, csv, sys
+from multiprocessing import Process, Queue
 from glob import glob
-
-EXECUTION_LIST = []
-TARGET_PATH = ""
-
+    
 def convert_to_epoch(datetime_string):
     # Defining the timestamp pattern to parse into Epoch. 
     ts_pattern = "%Y-%m-%dT%H:%M:%S.%f"
@@ -22,9 +20,10 @@ def convert_to_epoch(datetime_string):
                                     datetime_tuple.tm_sec).timestamp()
     return(int(epoch_time))
 
-def timeline_amcache():
+def timeline_amcache(TARGET_PATH,timeline_queue):
+    print("Processing amcache...")
     path = TARGET_PATH + r"\Windows\AppCompat\Programs\Amcache.hve"
-    command = '.\\bin\\AmcacheParser.exe -f ' + path + ' --csv ".\output" --csvf amcache.csv -i --dt "yyyy-MM-ddTHH:mm:ss.fff" >NUL'
+    command = '.\\bin\\AmcacheParser.exe -f "' + path + '" --csv ".\output" --csvf amcache.csv -i --dt "yyyy-MM-ddTHH:mm:ss.fff" >NUL'
     os.system(command)
 
     # List to control which amcache output to parse
@@ -63,14 +62,14 @@ def timeline_amcache():
                     amcache_data_message = "Source: " + row[full_path] + " | ProductName: " + row[product_name]
                     amcache_data_list.append(convert_to_epoch(file_timestamp))
                     amcache_data_list.append(amcache_data_message)
-                    EXECUTION_LIST.append(amcache_data_list)
+                    timeline_queue.put(amcache_data_list)
                     # data.append(amcache_data_list)
                 else:
                     amcache_data_message = "Source: " + row[full_path] + " | ProductName: " + row[product_name]
                     amcache_data_list.append(data_name)
                     amcache_data_list.append(int(convert_to_epoch(file_timestamp)))
                     amcache_data_list.append(amcache_data_message)
-                    EXECUTION_LIST.append(amcache_data_list)
+                    timeline_queue.put(amcache_data_list)
                     # data.append(amcache_data_list)
 
         #After processing for a file, push the data into execution_list
@@ -81,8 +80,12 @@ def timeline_amcache():
     for filename in amcache_to_delete:
         target = source_directory + "\\output\\amcache_" + filename + ".csv"
         os.remove(target)
+    print("Amcache processing completed!")
+    timeline_queue.put("DONE")
+    sys.exit()
 
-def timeline_userassist():
+def timeline_userassist(TARGET_PATH,timeline_queue):
+    print("Processing userassist...")
     path = TARGET_PATH + r"\Users"
     # A list to store all users' NTUSER.DAT (in case of shared computer)
     ntuser_list = []
@@ -93,7 +96,7 @@ def timeline_userassist():
                 ntuser_list.append(os.path.join(root, "NTUSER.DAT"))
 
     for file in ntuser_list:
-        command = '.\\bin\\regripper\\rip.exe -r ' + file + ' -p userassist_tln | findstr /C:"exe" /C:"lnk"'
+        command = '.\\bin\\regripper\\rip.exe -r "' + file + '" -p userassist_tln | findstr /C:"exe" /C:"lnk"'
         command_output = os.popen(command).read().split('\n')[:-1]
         for lines in command_output:
             for line in lines.split('\n'):
@@ -104,11 +107,15 @@ def timeline_userassist():
                 userassist_list.append(int(epoch_time) - int(-time.timezone))
                 userassist_list.append(executable_path)
 
-                EXECUTION_LIST.append(userassist_list)
+                timeline_queue.put(userassist_list)
+    print("Userassist processing completed!")
+    timeline_queue.put("DONE")
+    sys.exit()
 
-def timeline_eventlog():
+def timeline_eventlog(TARGET_PATH,timeline_queue):
+    print("Processing event logs...")
     path = TARGET_PATH + r"\Windows\System32\winevt\logs\Security.evtx"
-    command = '.\\bin\\EvtxECmd\\EvtxECmd.exe -f ' + path + ' --inc 4688 --json output --jsonf evtx.json >NUL'
+    command = '.\\bin\\EvtxECmd\\EvtxECmd.exe -f "' + path + '" --inc 4688 --json output --jsonf evtx.json >NUL'
     os.system(command)
     first_line_flag = 1
     with open("output\\evtx.json") as jsonfile:
@@ -134,19 +141,23 @@ def timeline_eventlog():
                 parent_process_name = "NULL"
                 
             # TO-DO: Need better formatting. 
-            message = parent_process_name + "[PARENT] -> " + process_name + "[CHILD]"
+            message = parent_process_name + " => SPAWNS => " + process_name
             
             evtx_list.append(execution_time_epoch)
             evtx_list.append(message)
 
-            EXECUTION_LIST.append(evtx_list)
+            timeline_queue.put(evtx_list)
     
     os.remove(".\\output\\evtx.json")
+    print("Event log processing completed!")
+    timeline_queue.put("DONE")
+    sys.exit()
 
-def timeline_srum():
+def timeline_srum(TARGET_PATH,timeline_queue):
+    print("Processing srum entries...")
     filersrc=""
 
-    command = '.\\bin\\SrumECmd.exe -d ' + TARGET_PATH +' --csv output >NUL'
+    command = '.\\bin\\SrumECmd.exe -d "' + TARGET_PATH + '" --csv output >NUL'
     os.system(command)
 
     outputdirectory = os.fsencode(".\\output")
@@ -155,7 +166,7 @@ def timeline_srum():
         if filename.endswith("AppResourceUseInfo_Output.csv"):
             filersrc=filename
             continue
-        elif filename.endswith(".csv") and not filename.endswith("AppResourceUseInfo_Output.csv"):
+        elif "SrumECmd" in filename and not filename.endswith("AppResourceUseInfo_Output.csv"):
             os.remove(".\\output\\"+filename)
         else:
             continue
@@ -184,14 +195,18 @@ def timeline_srum():
             message = value[1] + " (" + str(value[2]) + ")"
             srum_list.append(value[0])
             srum_list.append(message)
-            EXECUTION_LIST.append(srum_list)
+            timeline_queue.put(srum_list)
 
     os.remove(".\\output\\"+filersrc)
+    print("Srum processing completed!")
+    timeline_queue.put("DONE")
+    sys.exit()
             
-def timeline_jumplist():
+def timeline_jumplist(TARGET_PATH,timeline_queue):
+    print("Processing jumplist...")
     macroext=[".docm",".dotm",".xlm",".xlsm",".xltm",".xla",".xlam",".pptm",".ppsm",".sldm", ".docx"]
 
-    command = '.\\bin\\JLECmd.exe -q -d ' + TARGET_PATH + ' --json output >NUL'
+    command = '.\\bin\\JLECmd.exe -q -d "' + TARGET_PATH + '" --json output >NUL'
     os.system(command)
 
     source_directory = os.path.dirname(os.path.realpath(__file__))
@@ -201,6 +216,7 @@ def timeline_jumplist():
         filename = os.fsdecode(file)
         if filename.endswith("automaticDestinations-ms.json"): 
             with open("output\\"+filename, encoding="utf8") as jsonfile:
+                #print(filename)
                 for line in jsonfile:
                     for ext in macroext:
                         if ext in line:
@@ -214,12 +230,19 @@ def timeline_jumplist():
                                         jmp_list=["Jmp Log"]
                                         jmp_list.append(execution_time_epoch)
                                         jmp_list.append(recentdoc)
-                                        EXECUTION_LIST.append(jmp_list)
-        os.remove("output\\"+filename)
+                                        timeline_queue.put(jmp_list)
+            #Remove specific jumplist file when done
+            os.remove("output\\"+filename)
+        #Remove other ignored jumplist type file
+        if filename.endswith("customDestinations-ms.json"):
+            os.remove("output\\"+filename)
+    print("Jumplist processing completed!")
+    timeline_queue.put("DONE")
+    sys.exit()
           
-def timeline_lnkfiles():
-
-    command = '.\\bin\\LECmd.exe -q -d '+ TARGET_PATH +' --json output >NUL'
+def timeline_lnkfiles(TARGET_PATH,timeline_queue):
+    print("Processing link files...")
+    command = '.\\bin\\LECmd.exe -q -d "'+ TARGET_PATH +'" --json output >NUL'
     os.system(command)
 
     f = glob(os.path.join(".\\output","*_LECMD_Output.json"))[0]
@@ -240,12 +263,16 @@ def timeline_lnkfiles():
             if executable_path != "NULL":
                 lnk_list.append(execution_time_epoch)
                 lnk_list.append(executable_path)
-                EXECUTION_LIST.append(lnk_list)
+                timeline_queue.put(lnk_list)
     os.remove(".\\output\\lnktmp.json")
+    print("Link files processing completed!")
+    timeline_queue.put("DONE")
+    sys.exit()
 
-def timeline_prefetch():
+def timeline_prefetch(TARGET_PATH,timeline_queue):
+    print("Processing prefetch...")
     path = TARGET_PATH + r"\Windows\prefetch"
-    command = '.\\bin\\PECmd.exe -q -d ' + path + ' --json output --jsonf temp.json >NUL'
+    command = '.\\bin\\PECmd.exe -q -d "' + path + '" --json output --jsonf temp.json >NUL'
     os.system(command)
 
     with open("output\\temp.json", encoding="utf8") as jsonfile:
@@ -271,14 +298,18 @@ def timeline_prefetch():
             last_run_list.append(int(last_run_epoch)) # last run
             last_run_list.append(executable_path)
 
-            EXECUTION_LIST.append(first_run_list)
-            EXECUTION_LIST.append(last_run_list)
+            timeline_queue.put(first_run_list)
+            timeline_queue.put(last_run_list)
 
     os.remove("output\\temp.json")
+    print("Prefetch processing completed!")
+    timeline_queue.put("DONE")
+    sys.exit()
 
-def timeline_shimcache():
+def timeline_shimcache(TARGET_PATH,timeline_queue):
+    print("Processing shimcache...")
     path = TARGET_PATH + r"\Windows\System32\config\SYSTEM"
-    command = '.\\bin\\regripper\\rip.exe -r ' + path + ' -p appcompatcache_tln'
+    command = '.\\bin\\regripper\\rip.exe -r "' + path + '" -p appcompatcache_tln'
     # Read from 7th line onwards as the first 7 lines are plugin information
     # Last line is ommited as it is a blank line
     command_output = os.popen(command).read().split('\n')[7:-1]
@@ -292,11 +323,15 @@ def timeline_shimcache():
         executable_path = line.split('|')[4].split('-')[1]
         shimcache_list.append(int(epoch_time))
         shimcache_list.append(executable_path)
-        EXECUTION_LIST.append(shimcache_list)
+        timeline_queue.put(shimcache_list)
+    print("Shimcache processing completed!")
+    timeline_queue.put("DONE")
+    sys.exit()
 
-def timeline_bam():
+def timeline_bam(TARGET_PATH,timeline_queue):
+    print("Processing bam files...")
     path = TARGET_PATH + r"\Windows\System32\config\SYSTEM"
-    command = '.\\bin\\regripper\\rip.exe -r ' + path + ' -p bam_tln | findstr "exe"'
+    command = '.\\bin\\regripper\\rip.exe -r "' + path + '" -p bam_tln | findstr "exe"'
     command_output = os.popen(command).read().split('\n')[:-1]
 
     for line in command_output:
@@ -307,54 +342,47 @@ def timeline_bam():
         bam_list.append(int(epoch_time))
         bam_list.append(executable_path)
 
-        EXECUTION_LIST.append(bam_list)
+        timeline_queue.put(bam_list)
+    print("Bam processing completed!")
+    timeline_queue.put("DONE")
+    sys.exit()
 
 def main():
     if len(sys.argv) != 2:
-        print('Usage: python main.py <root folder of artefacts> \
-        \n\n\t\te.g. python main.py C:\\Users\\Bob\\kape_output\\c')
-
-        print('\nOutput will be saved to the output folder named YYYY-MM-DDTHHMMSS_output.csv \
-            \n\n\t\te.g. 2021-10-27T160839_output.csv\n')
+        print('Usage: python main.py <folder to kape output>\ne.g. python main.py C:\\Users\\Bob\\kape_output\\c')
         return
-
     path = sys.argv[1]
-    global TARGET_PATH 
+
+    #Initialize all variables for main
     TARGET_PATH = path
+    timeline_functions = [timeline_amcache,timeline_bam,timeline_srum,timeline_eventlog,timeline_lnkfiles,
+                        timeline_prefetch,timeline_shimcache,timeline_userassist,timeline_jumplist]
 
-    print("Processing Prefetch...")
-    timeline_prefetch()
-    print("Prefetch processing completed! (1/9)")
+    #Variables for process control and results
+    EXECUTION_LIST = []
+    completed_Process = 0
+    timeline_queue = Queue()
 
-    print("Processing Amcache...")
-    timeline_amcache()
-    print("Amcache processing completed! (2/9)")
+    #Start process for each timelining function
+    for function in timeline_functions:
+        p = Process(target=function,args=(TARGET_PATH,timeline_queue,))
+        p.start()
+    #Queue.get() auto blocks, join is not needed.
+    
+    #Set listener to await data from each child timeline processors. Exit when all done.
+    while True:
+        data = timeline_queue.get()
+        if data != "DONE":
+            EXECUTION_LIST.append(data)
+        else:
+            completed_Process += 1
+            print("Completed: (" + str(completed_Process) + "/" + str(len(timeline_functions))+ ")")
+        
+        #Loop control to stop getting data when all processes completes and exit.
+        if completed_Process == len(timeline_functions):
+            break
 
-    timeline_userassist()
-    print("Amcache processing completed! (3/9)")
-
-    timeline_shimcache()
-    print("ShimCache processing completed! (4/9)")
-
-    print("Processing Event Log...")
-    timeline_eventlog()
-    print("Event Log processing completed! (5/9)")
-
-    print("Processing LNK files...")
-    timeline_lnkfiles()
-    print("LNK processing completed! (6/9)")
-
-    timeline_bam()
-    print("BAM processing completed! (7/9)")
-
-    print("Processing SRUM...")
-    timeline_srum()
-    print("SRUM processing completed! (8/9)")
-
-    print("Processing Jump lists...")
-    timeline_jumplist()
-    print("Jump lists processing completed! (9/9)")
-
+    #Start timeline finalization
     print("Begin timelining...")
     # Reference: https://www.geeksforgeeks.org/python-sort-list-according-second-element-sublist/
     # Sort the nested list EXECUTION_LIST by second element. 
