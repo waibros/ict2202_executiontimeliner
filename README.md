@@ -19,7 +19,7 @@ The output will be saved in the **output** folder named in the format of YYYY-MM
 
 
 
-> # :tw-2764: Credit :tw-2764:
+> # :heart: Credit :heart:
 Eric Zimmerman parsers - https://ericzimmerman.github.io/#!index.md 
 RegRipper - https://github.com/keydet89/RegRipper3.0 
 
