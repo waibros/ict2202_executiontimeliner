@@ -141,7 +141,7 @@ def timeline_eventlog(TARGET_PATH,timeline_queue):
                 parent_process_name = "NULL"
                 
             # TO-DO: Need better formatting. 
-            message = parent_process_name + " => SPAWNS => " + process_name
+            message = parent_process_name + "[PARENT] -> " + process_name + "[CHILD]"
             
             evtx_list.append(execution_time_epoch)
             evtx_list.append(message)
@@ -349,7 +349,11 @@ def timeline_bam(TARGET_PATH,timeline_queue):
 
 def main():
     if len(sys.argv) != 2:
-        print('Usage: python main.py <folder to kape output>\ne.g. python main.py C:\\Users\\Bob\\kape_output\\c')
+        print('Usage: python main.py <root folder of artefacts> \
+        \n\n\t\te.g. python main.py C:\\Users\\Bob\\kape_output\\c')
+
+        print('\nOutput will be saved to the output folder named YYYY-MM-DDTHHMMSS_output.csv \
+            \n\n\t\te.g. 2021-10-27T160839_output.csv\n')
         return
     path = sys.argv[1]
 
