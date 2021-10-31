@@ -6,7 +6,13 @@ The tool tackles the issue on manual processing and analysis of individual artif
 
 The tool is designed and recommended to be used after extraction of artifacts using KAPE. The construction of the folder structure done by KAPE after extraction will be referred as **root folder** for the rest of the documentation. 
 
-## Pre-requisite
+## Installation
+```bash
+git clone https://github.com/waibros/ict2202.git 
+cd ict2202
+```
+
+## Requirement
 1. Python 3. The tool has been developed and tested with Python 3.10 (latest version as of writing)
 
 ## Usage:
@@ -18,8 +24,7 @@ python main.py <root folder>
 The output will be saved in the **output** folder named in the format of YYYY-MM-DDTHHMMSS_output.csv e.g. 2021-10-30T203959_output.csv 
 
 
-
-> # :heart: Credit :heart:
+# :heart: Acknowledgement :heart:
 Eric Zimmerman parsers - https://ericzimmerman.github.io/#!index.md 
 RegRipper - https://github.com/keydet89/RegRipper3.0 
 
