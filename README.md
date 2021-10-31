@@ -25,7 +25,7 @@ The output will be saved in the **output** folder named in the format of YYYY-MM
 
 
 # :heart: Acknowledgement :heart:
-Eric Zimmerman parsers - https://ericzimmerman.github.io/#!index.md 
+Eric Zimmerman parsers - https://ericzimmerman.github.io/#!index.md <br/>
 RegRipper - https://github.com/keydet89/RegRipper3.0 
 
 The tool couldn't be done without these wonderful parsers! 

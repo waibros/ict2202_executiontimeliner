@@ -204,7 +204,7 @@ def timeline_srum(TARGET_PATH,timeline_queue):
             
 def timeline_jumplist(TARGET_PATH,timeline_queue):
     print("Processing jumplist...")
-    macroext=[".docm",".dotm",".xlm",".xlsm",".xltm",".xla",".xlam",".pptm",".ppsm",".sldm", ".docx"]
+    macroext=[".docm",".dotm",".xlm",".xlsm",".xltm",".xla",".xlam",".pptm",".ppsm",".sldm", ".doc"]
 
     command = '.\\bin\\JLECmd.exe -q -d "' + TARGET_PATH + '" --json output >NUL'
     os.system(command)
