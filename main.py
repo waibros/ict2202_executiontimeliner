@@ -37,7 +37,6 @@ def timeline_amcache(TARGET_PATH,timeline_queue):
         print("Parsing " + name)
         data_name = "Amcache (" + name + ")"
         target = source_directory + "\\output\\amcache_" + name + ".csv"
-        data = []
 
         #Open the CSV file, reading each line as a dictionary
         with open(target, encoding='utf-8') as csvFile:
@@ -63,18 +62,12 @@ def timeline_amcache(TARGET_PATH,timeline_queue):
                     amcache_data_list.append(convert_to_epoch(file_timestamp))
                     amcache_data_list.append(amcache_data_message)
                     timeline_queue.put(amcache_data_list)
-                    # data.append(amcache_data_list)
                 else:
                     amcache_data_message = "Source: " + row[full_path] + " | ProductName: " + row[product_name]
                     amcache_data_list.append(data_name)
                     amcache_data_list.append(int(convert_to_epoch(file_timestamp)))
                     amcache_data_list.append(amcache_data_message)
                     timeline_queue.put(amcache_data_list)
-                    # data.append(amcache_data_list)
-
-        #After processing for a file, push the data into execution_list
-        # print(data)
-        # EXECUTION_LIST.append(data)
 
     #Delete csv files
     for filename in amcache_to_delete:
@@ -356,23 +349,23 @@ def main():
         return
     path = sys.argv[1]
 
-    #Initialize all variables for main
+    # Initialize all variables for main
     TARGET_PATH = path
     timeline_functions = [timeline_amcache,timeline_bam,timeline_srum,timeline_eventlog,timeline_lnkfiles,
                         timeline_prefetch,timeline_shimcache,timeline_userassist,timeline_jumplist]
 
-    #Variables for process control and results
+    # Variables for process control and results
     EXECUTION_LIST = []
     completed_Process = 0
     timeline_queue = Queue()
 
-    #Start process for each timelining function
+    # Start process for each timelining function
     for function in timeline_functions:
         p = Process(target=function,args=(TARGET_PATH,timeline_queue,))
         p.start()
-    #Queue.get() auto blocks, join is not needed.
+    # Queue get auto blocks, process join is not needed.
     
-    #Set listener to await data from each child timeline processors. Exit when all done.
+    # Set listener to await data from each child timeline processors. Exit when all done.
     while True:
         data = timeline_queue.get()
         if data != "DONE":
@@ -381,11 +374,11 @@ def main():
             completed_Process += 1
             print("Completed: (" + str(completed_Process) + "/" + str(len(timeline_functions))+ ")")
         
-        #Loop control to stop getting data when all processes completes and exit.
+        # Loop control to stop getting data when all processes completes and exit.
         if completed_Process == len(timeline_functions):
             break
 
-    #Start timeline finalization
+    # Start timeline finalization
     print("Begin timelining...")
     # Reference: https://www.geeksforgeeks.org/python-sort-list-according-second-element-sublist/
     # Sort the nested list EXECUTION_LIST by second element. 
