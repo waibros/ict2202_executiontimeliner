@@ -34,41 +34,42 @@ def timeline_amcache(TARGET_PATH,timeline_queue):
     source_directory = os.path.dirname(os.path.realpath(__file__))
 
     for name in amcache_files:
-        print("Parsing " + name)
         data_name = "Amcache (" + name + ")"
         target = source_directory + "\\output\\amcache_" + name + ".csv"
+        try:
+            #Open the CSV file, reading each line as a dictionary
+            with open(target, encoding='utf-8') as csvFile:
+                csvFileReader = csv.DictReader(csvFile)
 
-        #Open the CSV file, reading each line as a dictionary
-        with open(target, encoding='utf-8') as csvFile:
-            csvFileReader = csv.DictReader(csvFile)
+                #Set different headers for different csv file content type
+                full_path = "FullPath"
+                product_name = "ProductName"
+                key_lastwrite = "FileKeyLastWriteTimestamp"
+                if name == "ProgramEntries":
+                    full_path = "RootDirPath"
+                    product_name = "Name"
+                    key_lastwrite = "KeyLastWriteTimestamp"
 
-            #Set different headers for different csv file content type
-            full_path = "FullPath"
-            product_name = "ProductName"
-            key_lastwrite = "FileKeyLastWriteTimestamp"
-            if name == "ProgramEntries":
-                full_path = "RootDirPath"
-                product_name = "Name"
-                key_lastwrite = "KeyLastWriteTimestamp"
-
-            for row in csvFileReader:
-                amcache_data_list = []
-                file_timestamp = row[key_lastwrite].strip()
-                #Check if the File write time is empty
-                if not file_timestamp:
-                    #Handle empty time and set it to 0 for epoch
-                    file_timestamp = "1970-1-1T00:00:00"
-                    amcache_data_message = "Source: " + row[full_path] + " | ProductName: " + row[product_name]
-                    amcache_data_list.append(convert_to_epoch(file_timestamp))
-                    amcache_data_list.append(amcache_data_message)
-                    timeline_queue.put(amcache_data_list)
-                else:
-                    amcache_data_message = "Source: " + row[full_path] + " | ProductName: " + row[product_name]
-                    amcache_data_list.append(data_name)
-                    amcache_data_list.append(int(convert_to_epoch(file_timestamp)))
-                    amcache_data_list.append(amcache_data_message)
-                    timeline_queue.put(amcache_data_list)
-
+                for row in csvFileReader:
+                    amcache_data_list = []
+                    file_timestamp = row[key_lastwrite].strip()
+                    #Check if the File write time is empty
+                    if not file_timestamp:
+                        #Handle empty time and set it to 0 for epoch
+                        file_timestamp = "1970-1-1T00:00:00"
+                        amcache_data_message = "Source: " + row[full_path] + " | ProductName: " + row[product_name]
+                        amcache_data_list.append(convert_to_epoch(file_timestamp))
+                        amcache_data_list.append(amcache_data_message)
+                        timeline_queue.put(amcache_data_list)
+                    else:
+                        amcache_data_message = "Source: " + row[full_path] + " | ProductName: " + row[product_name]
+                        amcache_data_list.append(data_name)
+                        amcache_data_list.append(int(convert_to_epoch(file_timestamp)))
+                        amcache_data_list.append(amcache_data_message)
+                        timeline_queue.put(amcache_data_list)
+        except:
+            timeline_queue.put("ERROR_Amcache")
+            sys.exit()
     #Delete csv files
     for filename in amcache_to_delete:
         target = source_directory + "\\output\\amcache_" + filename + ".csv"
@@ -87,20 +88,22 @@ def timeline_userassist(TARGET_PATH,timeline_queue):
         if root[len(path):].count(os.sep) < 2:
             if 'NTUSER.DAT' in files and 'Default' not in root:
                 ntuser_list.append(os.path.join(root, "NTUSER.DAT"))
+            for file in ntuser_list:
+                command = '.\\bin\\regripper\\rip.exe -r "' + file + '" -p userassist_tln | findstr /C:"exe" /C:"lnk"'
+                command_output = os.popen(command).read().split('\n')[:-1]
+                for lines in command_output:
+                    for line in lines.split('\n'):
+                        userassist_list = ["Userassist"]
+                        epoch_time = line.split('|')[0]
+                        # Further slice the 4th field of command output with '-' character to extract only the Executable path
+                        executable_path = ''.join(line.split('|')[4].split('-')[1:])
+                        userassist_list.append(int(epoch_time) - int(-time.timezone))
+                        userassist_list.append(executable_path)
 
-    for file in ntuser_list:
-        command = '.\\bin\\regripper\\rip.exe -r "' + file + '" -p userassist_tln | findstr /C:"exe" /C:"lnk"'
-        command_output = os.popen(command).read().split('\n')[:-1]
-        for lines in command_output:
-            for line in lines.split('\n'):
-                userassist_list = ["Userassist"]
-                epoch_time = line.split('|')[0]
-                # Further slice the 4th field of command output with '-' character to extract only the Executable path
-                executable_path = ''.join(line.split('|')[4].split('-')[1:])
-                userassist_list.append(int(epoch_time) - int(-time.timezone))
-                userassist_list.append(executable_path)
-
-                timeline_queue.put(userassist_list)
+                        timeline_queue.put(userassist_list)
+    #timeline_queue.put("ERROR_Userassist")
+    #sys.exit()
+    
     print("Userassist processing completed!")
     timeline_queue.put("DONE")
     sys.exit()
@@ -111,6 +114,12 @@ def timeline_eventlog(TARGET_PATH,timeline_queue):
     command = '.\\bin\\EvtxECmd\\EvtxECmd.exe -f "' + path + '" --inc 4688 --json output --jsonf evtx.json >NUL'
     os.system(command)
     first_line_flag = 1
+    #not working
+    if os.stat("output\\evtx.json").st_size == 0: 
+        timeline_queue.put("ERROR_Event Logs")
+        os.remove(".\\output\\evtx.json")
+        sys.exit()
+
     with open("output\\evtx.json") as jsonfile:
         for line in jsonfile:
             evtx_list = ["Event Log"]
@@ -132,10 +141,10 @@ def timeline_eventlog(TARGET_PATH,timeline_queue):
                 parent_process_name = payload_items[13]['#text']
             except:
                 parent_process_name = "NULL"
-                
+                    
             # TO-DO: Need better formatting. 
             message = parent_process_name + "[PARENT] -> " + process_name + "[CHILD]"
-            
+                
             evtx_list.append(execution_time_epoch)
             evtx_list.append(message)
 
@@ -163,32 +172,35 @@ def timeline_srum(TARGET_PATH,timeline_queue):
             os.remove(".\\output\\"+filename)
         else:
             continue
+    try:
+        with open(".\\output\\"+filersrc, newline='', encoding='utf8') as csvfile:
             
-    with open(".\\output\\"+filersrc, newline='', encoding='utf8') as csvfile:
-        
-        pattern = '%Y-%m-%d %H:%M:%S'
-        srum_dict = {}
-        srum_list = []
-        srum_reader = csv.DictReader(csvfile, delimiter=',')
-        sorted_reader = sorted(srum_reader, key=lambda d: int(d['AppId']))
+            pattern = '%Y-%m-%d %H:%M:%S'
+            srum_dict = {}
+            srum_list = []
+            srum_reader = csv.DictReader(csvfile, delimiter=',')
+            sorted_reader = sorted(srum_reader, key=lambda d: int(d['AppId']))
 
-        for row in sorted_reader:
-            if row['ExeInfo'].endswith("exe"):
-                if row['AppId'] in srum_dict:
-                    # If the AppId appears again, increment RunCount.
-                    srum_dict[row['AppId']][2] += 1
-                else:
-                    # Initialize dictionary key-pair of AppId: Timestamp, ExecutablePath, RunCount
-                    # First occurence of the executable is captured as first run is more valuable than last run.
-                    epoch_time = int(time.mktime(time.strptime(row["Timestamp"], pattern)))
-                    srum_dict[row['AppId']] = [epoch_time, row['ExeInfo'], 1]
-    
-        for key, value in srum_dict.items():
-            srum_list = ["Srum"]
-            message = value[1] + " (" + str(value[2]) + ")"
-            srum_list.append(value[0])
-            srum_list.append(message)
-            timeline_queue.put(srum_list)
+            for row in sorted_reader:
+                if row['ExeInfo'].endswith("exe"):
+                    if row['AppId'] in srum_dict:
+                        # If the AppId appears again, increment RunCount.
+                        srum_dict[row['AppId']][2] += 1
+                    else:
+                        # Initialize dictionary key-pair of AppId: Timestamp, ExecutablePath, RunCount
+                        # First occurence of the executable is captured as first run is more valuable than last run.
+                        epoch_time = int(time.mktime(time.strptime(row["Timestamp"], pattern)))
+                        srum_dict[row['AppId']] = [epoch_time, row['ExeInfo'], 1]
+        
+            for key, value in srum_dict.items():
+                srum_list = ["Srum"]
+                message = value[1] + " (" + str(value[2]) + ")"
+                srum_list.append(value[0])
+                srum_list.append(message)
+                timeline_queue.put(srum_list)
+    except:
+        timeline_queue.put("ERROR_Srum")
+        sys.exit()
 
     os.remove(".\\output\\"+filersrc)
     print("Srum processing completed!")
@@ -205,29 +217,34 @@ def timeline_jumplist(TARGET_PATH,timeline_queue):
     source_directory = os.path.dirname(os.path.realpath(__file__))
 
     outputdirectory = os.fsencode(".\\output")
-    for file in os.listdir(outputdirectory):
-        filename = os.fsdecode(file)
-        if filename.endswith("automaticDestinations-ms.json"): 
-            with open("output\\"+filename, encoding="utf8") as jsonfile:
-                for line in jsonfile:
-                    for ext in macroext:
-                        if ext in line:
-                            parsed_json = json.loads(line)
-                            for i in range(len(parsed_json["DestListEntries"])):
-                                recentdoc = parsed_json["DestListEntries"][i]["Path"]
-                                # Extracts only first 10 digits of the epoch time as the last 3 digits are milliseconds. 
-                                execution_time_epoch = int(re.sub("[^0-9]", "", parsed_json["DestListEntries"][i]["LastModified"])[:10]) - int(-time.timezone)
-                                for ext in macroext:
-                                    if recentdoc.endswith(ext):
-                                        jmp_list=["Jmp Log"]
-                                        jmp_list.append(execution_time_epoch)
-                                        jmp_list.append(recentdoc)
-                                        timeline_queue.put(jmp_list)
-            #Remove specific jumplist file when done
-            os.remove("output\\"+filename)
-        #Remove other ignored jumplist type file
-        if filename.endswith("customDestinations-ms.json"):
-            os.remove("output\\"+filename)
+    #not working
+    try:
+        for file in os.listdir(outputdirectory):
+            filename = os.fsdecode(file)
+            if filename.endswith("automaticDestinations-ms.json"): 
+                with open("output\\"+filename, encoding="utf8") as jsonfile:
+                    for line in jsonfile:
+                        for ext in macroext:
+                            if ext in line:
+                                parsed_json = json.loads(line)
+                                for i in range(len(parsed_json["DestListEntries"])):
+                                    recentdoc = parsed_json["DestListEntries"][i]["Path"]
+                                    # Extracts only first 10 digits of the epoch time as the last 3 digits are milliseconds. 
+                                    execution_time_epoch = int(re.sub("[^0-9]", "", parsed_json["DestListEntries"][i]["LastModified"])[:10]) - int(-time.timezone)
+                                    for ext in macroext:
+                                        if recentdoc.endswith(ext):
+                                            jmp_list=["Jmp Log"]
+                                            jmp_list.append(execution_time_epoch)
+                                            jmp_list.append(recentdoc)
+                                            timeline_queue.put(jmp_list)
+                #Remove specific jumplist file when done
+                os.remove("output\\"+filename)
+            #Remove other ignored jumplist type file
+            if filename.endswith("customDestinations-ms.json"):
+                os.remove("output\\"+filename)
+    except:
+        timeline_queue.put("ERROR_jumplist")
+        sys.exit()
     print("Jumplist processing completed!")
     timeline_queue.put("DONE")
     sys.exit()
@@ -236,26 +253,29 @@ def timeline_lnkfiles(TARGET_PATH,timeline_queue):
     print("Processing link files...")
     command = '.\\bin\\LECmd.exe -q -d "'+ TARGET_PATH +'" --json output >NUL'
     os.system(command)
-
-    f = glob(os.path.join(".\\output","*_LECMD_Output.json"))[0]
-    if os.path.isfile('.\\output\\lnktmp.json'):
-        os.remove(".\\output\\lnktmp.json")
-    os.rename(f, os.path.join(".\\output","lnktmp.json"))
-
-    with open("output\\lnktmp.json") as jsonfile:
-        for line in jsonfile:
-            lnk_list = ["Lnk Log"]
-            
-            parsed_json = json.loads(line)
-            execution_time_epoch = convert_to_epoch(parsed_json["SourceAccessed"])
-            try:
-                executable_path = parsed_json["LocalPath"]
-            except:
-                executable_path = "NULL"
-            if executable_path != "NULL":
-                lnk_list.append(execution_time_epoch)
-                lnk_list.append(executable_path)
-                timeline_queue.put(lnk_list)
+    try:
+        f = glob(os.path.join(".\\output","*_LECMD_Output.json"))[0]
+        if os.path.isfile('.\\output\\lnktmp.json'):
+            os.remove(".\\output\\lnktmp.json")
+        os.rename(f, os.path.join(".\\output","lnktmp.json"))
+        
+        with open("output\\lnktmp.json") as jsonfile:
+            for line in jsonfile:
+                lnk_list = ["Lnk Log"]
+                    
+                parsed_json = json.loads(line)
+                execution_time_epoch = convert_to_epoch(parsed_json["SourceAccessed"])
+                try:
+                    executable_path = parsed_json["LocalPath"]
+                except:
+                    executable_path = "NULL"
+                if executable_path != "NULL":
+                    lnk_list.append(execution_time_epoch)
+                    lnk_list.append(executable_path)
+                    timeline_queue.put(lnk_list)
+    except:
+        timeline_queue.put("ERROR_Link files")
+        sys.exit()
     os.remove(".\\output\\lnktmp.json")
     print("Link files processing completed!")
     timeline_queue.put("DONE")
@@ -266,32 +286,35 @@ def timeline_prefetch(TARGET_PATH,timeline_queue):
     path = TARGET_PATH + r"\Windows\prefetch"
     command = '.\\bin\\PECmd.exe -q -d "' + path + '" --json output --jsonf temp.json >NUL'
     os.system(command)
+    try:
+        with open("output\\temp.json", encoding="utf8") as jsonfile:
+            for line in jsonfile:
+                
+                first_run_list = ["Prefetch (First Run)"]
+                last_run_list = ["Prefetch (Last Run)"]
+                
+                executable_path = ""
+                parsed_json = json.loads(line)
+                executable_name = parsed_json["ExecutableName"]
+                files_loaded = parsed_json["FilesLoaded"]
+                executable_path = ""
+                for file in files_loaded.split(","):
+                    if executable_name in file:
+                        executable_path = file
 
-    with open("output\\temp.json", encoding="utf8") as jsonfile:
-        for line in jsonfile:
-            
-            first_run_list = ["Prefetch (First Run)"]
-            last_run_list = ["Prefetch (Last Run)"]
-            
-            executable_path = ""
-            parsed_json = json.loads(line)
-            executable_name = parsed_json["ExecutableName"]
-            files_loaded = parsed_json["FilesLoaded"]
-            executable_path = ""
-            for file in files_loaded.split(","):
-                if executable_name in file:
-                    executable_path = file
+                first_run_epoch = convert_to_epoch(parsed_json["SourceCreated"])  
+                last_run_epoch = convert_to_epoch(parsed_json["SourceModified"])    
 
-            first_run_epoch = convert_to_epoch(parsed_json["SourceCreated"])  
-            last_run_epoch = convert_to_epoch(parsed_json["SourceModified"])    
+                first_run_list.append(int(first_run_epoch)) # first run
+                first_run_list.append(executable_path)
+                last_run_list.append(int(last_run_epoch)) # last run
+                last_run_list.append(executable_path)
 
-            first_run_list.append(int(first_run_epoch)) # first run
-            first_run_list.append(executable_path)
-            last_run_list.append(int(last_run_epoch)) # last run
-            last_run_list.append(executable_path)
-
-            timeline_queue.put(first_run_list)
-            timeline_queue.put(last_run_list)
+                timeline_queue.put(first_run_list)
+                timeline_queue.put(last_run_list)
+    except:
+        timeline_queue.put("ERROR_Prefetch")
+        sys.exit()
 
     os.remove("output\\temp.json")
     print("Prefetch processing completed!")
@@ -351,11 +374,13 @@ def main():
 
     # Initialize all variables for main
     TARGET_PATH = path
-    timeline_functions = [timeline_amcache,timeline_bam,timeline_srum,timeline_eventlog,timeline_lnkfiles,
-                        timeline_prefetch,timeline_shimcache,timeline_userassist,timeline_jumplist]
+    #timeline_functions = [timeline_amcache,timeline_bam,timeline_srum,timeline_eventlog,timeline_lnkfiles,
+    #                    timeline_prefetch,timeline_shimcache,timeline_userassist,timeline_jumplist]
+    timeline_functions = [timeline_eventlog]
 
     # Variables for process control and results
     EXECUTION_LIST = []
+    ERROR_LIST = []
     completed_Process = 0
     timeline_queue = Queue()
 
@@ -368,8 +393,11 @@ def main():
     # Set listener to await data from each child timeline processors. Exit when all done.
     while True:
         data = timeline_queue.get()
-        if data != "DONE":
-            EXECUTION_LIST.append(data)
+        if "ERROR_" in data:
+            ERROR_LIST.append(data.split("_")[1])
+            completed_Process += 1
+        elif data != "DONE":
+            EXECUTION_LIST.append(data) 
         else:
             completed_Process += 1
             print("Completed: (" + str(completed_Process) + "/" + str(len(timeline_functions))+ ")")
@@ -377,6 +405,14 @@ def main():
         # Loop control to stop getting data when all processes completes and exit.
         if completed_Process == len(timeline_functions):
             break
+    
+    #Control to show how many tools have failed
+    if len(ERROR_LIST) > 0:
+        print("The following categories have failed/not found and will not be found in the timeline: ")
+        print("--------------------------------------")
+        for tool in ERROR_LIST:
+            print(tool)
+        print("--------------------------------------")
 
     # Start timeline finalization
     print("Begin timelining...")
