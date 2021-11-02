@@ -83,6 +83,8 @@ def timeline_userassist(TARGET_PATH,timeline_queue):
     path = TARGET_PATH + r"\Users"
     # A list to store all users' NTUSER.DAT (in case of shared computer)
     ntuser_list = []
+    userassist_count = 0
+
     for root, dirs, files in os.walk(path):
         # Reference: https://newbedev.com/python-os-walk-to-certain-level 
         if root[len(path):].count(os.sep) < 2:
@@ -91,6 +93,7 @@ def timeline_userassist(TARGET_PATH,timeline_queue):
             for file in ntuser_list:
                 command = '.\\bin\\regripper\\rip.exe -r "' + file + '" -p userassist_tln | findstr /C:"exe" /C:"lnk"'
                 command_output = os.popen(command).read().split('\n')[:-1]
+                userassist_count += 1
                 for lines in command_output:
                     for line in lines.split('\n'):
                         userassist_list = ["Userassist"]
@@ -101,8 +104,9 @@ def timeline_userassist(TARGET_PATH,timeline_queue):
                         userassist_list.append(executable_path)
 
                         timeline_queue.put(userassist_list)
-    #timeline_queue.put("ERROR_Userassist")
-    #sys.exit()
+    if userassist_count == 0:
+        timeline_queue.put("ERROR_Userassist")
+        sys.exit()
     
     print("Userassist processing completed!")
     timeline_queue.put("DONE")
@@ -213,38 +217,40 @@ def timeline_jumplist(TARGET_PATH,timeline_queue):
 
     command = '.\\bin\\JLECmd.exe -q -d "' + TARGET_PATH + '" --json output >NUL'
     os.system(command)
-
-    source_directory = os.path.dirname(os.path.realpath(__file__))
+    jumplist_files_count = 0
 
     outputdirectory = os.fsencode(".\\output")
-    #not working
-    try:
-        for file in os.listdir(outputdirectory):
-            filename = os.fsdecode(file)
-            if filename.endswith("automaticDestinations-ms.json"): 
-                with open("output\\"+filename, encoding="utf8") as jsonfile:
-                    for line in jsonfile:
-                        for ext in macroext:
-                            if ext in line:
-                                parsed_json = json.loads(line)
-                                for i in range(len(parsed_json["DestListEntries"])):
-                                    recentdoc = parsed_json["DestListEntries"][i]["Path"]
-                                    # Extracts only first 10 digits of the epoch time as the last 3 digits are milliseconds. 
-                                    execution_time_epoch = int(re.sub("[^0-9]", "", parsed_json["DestListEntries"][i]["LastModified"])[:10]) - int(-time.timezone)
-                                    for ext in macroext:
-                                        if recentdoc.endswith(ext):
-                                            jmp_list=["Jmp Log"]
-                                            jmp_list.append(execution_time_epoch)
-                                            jmp_list.append(recentdoc)
-                                            timeline_queue.put(jmp_list)
-                #Remove specific jumplist file when done
-                os.remove("output\\"+filename)
-            #Remove other ignored jumplist type file
-            if filename.endswith("customDestinations-ms.json"):
-                os.remove("output\\"+filename)
-    except:
-        timeline_queue.put("ERROR_jumplist")
+
+    for file in os.listdir(outputdirectory):
+        filename = os.fsdecode(file)
+        if filename.endswith("automaticDestinations-ms.json"):
+            jumplist_files_count += 1
+            with open("output\\"+filename, encoding="utf8") as jsonfile:
+                for line in jsonfile:
+                    for ext in macroext:
+                        if ext in line:
+                            parsed_json = json.loads(line)
+                            for i in range(len(parsed_json["DestListEntries"])):
+                                recentdoc = parsed_json["DestListEntries"][i]["Path"]
+                                # Extracts only first 10 digits of the epoch time as the last 3 digits are milliseconds. 
+                                execution_time_epoch = int(re.sub("[^0-9]", "", parsed_json["DestListEntries"][i]["LastModified"])[:10]) - int(-time.timezone)
+                                for ext in macroext:
+                                    if recentdoc.endswith(ext):
+                                        jmp_list=["Jmp Log"]
+                                        jmp_list.append(execution_time_epoch)
+                                        jmp_list.append(recentdoc)
+                                        timeline_queue.put(jmp_list)
+            #Remove specific jumplist file when done
+            os.remove("output\\"+filename)
+        #Remove other ignored jumplist type file
+        if filename.endswith("customDestinations-ms.json"):
+            jumplist_files_count += 1
+            os.remove("output\\"+filename)
+    
+    if jumplist_files_count == 0:
+        timeline_queue.put("ERROR_Jumplist")
         sys.exit()
+
     print("Jumplist processing completed!")
     timeline_queue.put("DONE")
     sys.exit()
@@ -329,6 +335,11 @@ def timeline_shimcache(TARGET_PATH,timeline_queue):
     # Last line is ommited as it is a blank line
     command_output = os.popen(command).read().split('\n')[7:-1]
 
+    # Trimmed output is empty, error occured.
+    if len(command_output) == 0:
+        timeline_queue.put("ERROR_Shimcache")
+        sys.exit()
+
     # Command output is delimited with '|' character
     for line in command_output:
         shimcache_list = ["Shimcache"]
@@ -339,6 +350,7 @@ def timeline_shimcache(TARGET_PATH,timeline_queue):
         shimcache_list.append(int(epoch_time))
         shimcache_list.append(executable_path)
         timeline_queue.put(shimcache_list)
+        
     print("Shimcache processing completed!")
     timeline_queue.put("DONE")
     sys.exit()
@@ -348,6 +360,11 @@ def timeline_bam(TARGET_PATH,timeline_queue):
     path = TARGET_PATH + r"\Windows\System32\config\SYSTEM"
     command = '.\\bin\\regripper\\rip.exe -r "' + path + '" -p bam_tln | findstr "exe"'
     command_output = os.popen(command).read().split('\n')[:-1]
+
+    # Trimmed output is empty, error occured.
+    if len(command_output) == 0:
+        timeline_queue.put("ERROR_BAM")
+        sys.exit()
 
     for line in command_output:
         bam_list = ["BAM"]
@@ -374,9 +391,8 @@ def main():
 
     # Initialize all variables for main
     TARGET_PATH = path
-    #timeline_functions = [timeline_amcache,timeline_bam,timeline_srum,timeline_eventlog,timeline_lnkfiles,
-    #                    timeline_prefetch,timeline_shimcache,timeline_userassist,timeline_jumplist]
-    timeline_functions = [timeline_eventlog]
+    timeline_functions = [timeline_amcache,timeline_bam,timeline_srum,timeline_eventlog,timeline_lnkfiles,
+                       timeline_prefetch,timeline_shimcache,timeline_userassist,timeline_jumplist]
 
     # Variables for process control and results
     EXECUTION_LIST = []
