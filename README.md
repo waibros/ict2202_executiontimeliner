@@ -8,8 +8,7 @@ The tool is designed and recommended to be used after extraction of artifacts us
 
 ## Installation
 ```bash
-git clone https://github.com/waibros/ict2202.git 
-cd ict2202
+git clone https://github.com/waibros/ict2202_executiontimeliner.git
 ```
 
 ## Requirement
