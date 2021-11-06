@@ -146,7 +146,6 @@ def timeline_eventlog(TARGET_PATH,timeline_queue):
             except:
                 parent_process_name = "NULL"
                     
-            # TO-DO: Need better formatting. 
             message = parent_process_name + "[PARENT] -> " + process_name + "[CHILD]"
                 
             evtx_list.append(execution_time_epoch)
@@ -345,7 +344,6 @@ def timeline_shimcache(TARGET_PATH,timeline_queue):
         shimcache_list = ["Shimcache"]
         epoch_time = line.split('|')[0]
         # Further slice the 4th field of command output with '-' character to extract only the Executable path
-        # TO-DO: Further improve by checking if executable path starts with drive letter. 
         executable_path = line.split('|')[4].split('-')[1]
         shimcache_list.append(int(epoch_time))
         shimcache_list.append(executable_path)
